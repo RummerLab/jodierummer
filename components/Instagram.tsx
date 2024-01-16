@@ -1,6 +1,6 @@
 import { InstagramPost } from '../types/Instagram';
 
-const REVALIDATE = 604800
+const REVALIDATE = 604800 // 1 week
 
 async function getInstagramToken() {
     try {
