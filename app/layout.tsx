@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 
 export const metadata = {
-  title: "RummerLab",
+  title: "Dr Jodie Rummer",
   description: 'Dr Jodie Rummer\'s lab',
 }
 
@@ -21,7 +21,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="dark:bg-slate-800">
         <Navbar />
-        {children}
+        <main className="flex min-h-screen flex-col items-center justify-between p-24">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

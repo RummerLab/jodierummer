@@ -1,5 +1,5 @@
-import Link from "next/link"
-import { FaInstagram } from "react-icons/fa"
+import Link from "next/link";
+import { FaInstagram, FaFacebook } from "react-icons/fa";
 import InstagramPosts from "./Instagram";
 
 export default function Footer() {

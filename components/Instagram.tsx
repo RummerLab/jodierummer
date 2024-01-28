@@ -12,12 +12,12 @@ async function getInstagramToken() {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: new URLSearchParams({
-                client_id: process.env.INSTAGRAM_CLIENT_ID,
-                client_secret: process.env.INSTAGRAM_CLIENT_SECRET,
+                client_id: process.env.INSTAGRAM_CLIENT_ID || '',
+                client_secret: process.env.INSTAGRAM_CLIENT_SECRET || '',
                 grant_type: 'authorization_code',
-                redirect_uri: process.env.INSTAGRAM_REDIRECT_URI,
-                code: process.env.INSTAGRAM_AUTHORIZATION_CODE,
-            }),
+                redirect_uri: process.env.INSTAGRAM_REDIRECT_URI || '',
+                code: process.env.INSTAGRAM_AUTHORIZATION_CODE || '',
+            }).toString(),
         });
 
         if (!res.ok) {
@@ -70,12 +70,11 @@ export default async function InstagramPosts() {
 
     return (
         <div id="instafeed">
-            {posts.map(post => (
+            {posts.map((post: InstagramPost) => (
                 <a key={post.id} href={post.permalink} target="_blank" rel="noopener noreferrer">
                     <img src={post.media_url} alt={post.username} loading="lazy" />
                 </a>
             ))}
         </div>
     );
-
 }
