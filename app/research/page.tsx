@@ -6,6 +6,8 @@ export const metadata = {
 
 export default function Research() {
     return (
-        <div>Research</div>
+        <>
+            <h1>Research</h1>
+        </>
     )
 }

@@ -6,7 +6,7 @@ export const metadata = {
 
 export default function womenInScience() {
     return (
-        <div>
+        <>
             <h1>Women in Science</h1>
             <p>
                 "Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less." - Marie Curie
@@ -32,6 +32,6 @@ export default function womenInScience() {
                 Rummer, J.L., 2014. Networking. In Pritchard, P. & Grant, C. (eds.), Success Strategies from Women in STEM: A Portable Mentor, 2nd edition. Elsevier (In press, accepted 31 January, 2014).
 
                 I also share Women in Science issues on Twitter using the hashtag #womeninscience.</p>
-        </div>
+        </>
     )
 }

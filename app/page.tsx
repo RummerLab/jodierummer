@@ -12,7 +12,7 @@ export default function Home() {
   ), [])*///<Map />
 
   return (
-    <div>
+    <>
       <p>Watch my TEDx talk: Athletes of the Great Barrier Reef</p>
 
       <p>With over 400 million years of evolution, the fishes represent one of the most successful adaptive radiation events in vertebrate history.Yet, we do not fully understand how fish are responding to environmental and human - induced stress and their capacity to adapt to global climate change, which is the focus of my research.</p>
@@ -25,6 +25,6 @@ export default function Home() {
 
       <p><Link href="/women-in-science">Women in Science</Link></p>
 
-    </div>
+    </>
   )
 }

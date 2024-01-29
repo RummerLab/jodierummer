@@ -6,7 +6,7 @@ export const metadata = {
 
 export default function WomenInScience() {
     return (
-        <div>
+        <>
             <h1>Professor Jodie Rummer</h1>
             <p>Marine Biology, College of Science of Engineering
                 James Cook University, Townsville, Australia
@@ -64,6 +64,6 @@ export default function WomenInScience() {
 
                 Jodie has an h - index of 37, has published 107 peer - reviewed journal articles, 13 book chapters, 8 conference proceedings, 21 editorial commentaries, and has presented her work at more than 120 professional conferences and public events.She also uses social media to communicate scientific findings, highlight fellow scientists' success stories and achievements, and to advocate for issues related to women in science, gender balance, and diversity in STEM.
             </p>
-        </div>
+        </>
     )
 }
