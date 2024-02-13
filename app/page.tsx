@@ -1,6 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+export const metadata = {
+  title: "Dr Jodie Rummer - Marine Biologist, TEDx Speaker, and Fish Friend",
+  description: '',
+}
+
 export default function Home() {
 
   /*const Map = useMemo(() => dynamic(
