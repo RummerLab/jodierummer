@@ -1,30 +1,26 @@
 {
-  "name": "Jodie Rummer",
+  "name": "jodie-rummer",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "leaflet": "^1.9.4",
-    "leaflet-defaulticon-compatibility": "^0.1.2",
-    "next": "^14.2.22",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-icons": "^5.4.0",
-    "react-leaflet": "^4.2.1"
+    "next": "15.1.6",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-icons": "^5.4.0"
   },
   "devDependencies": {
-    "@types/leaflet": "^1.9.8",
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "19.0.8",
+    "@types/react-dom": "19.0.3",
     "autoprefixer": "^10.0.1",
     "eslint": "^8.56.0",
-    "eslint-config-next": "^14.0.4",
+    "eslint-config-next": "15.1.6",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { FaInstagram, FaFacebook } from "react-icons/fa";
-import InstagramPosts from "./Instagram";
 
 export default function Footer() {
     return (
@@ -16,7 +15,6 @@ export default function Footer() {
                 </Link>
                 !
             </p>
-            <InstagramPosts />
         </footer>
     );
 };

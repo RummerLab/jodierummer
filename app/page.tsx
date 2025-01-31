@@ -8,13 +8,6 @@ export const metadata = {
 
 export default function Home() {
 
-  /*const Map = useMemo(() => dynamic(
-    () => import('../components/Leaflet'),
-    {
-      loading: () => <p>A map is loading</p>,
-      ssr: false
-    }
-  ), [])*///<Map />
 
   return (
     <>
