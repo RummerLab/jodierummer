@@ -1,15 +1,21 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Outfit } from 'next/font/google'
 import './globals.css'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
-const inter = Inter({ subsets: ['latin'] })
+const outfit = Outfit({ 
+  subsets: ['latin'],
+  variable: '--font-outfit',
+})
 
-
-export const metadata = {
-  title: "Dr Jodie Rummer",
-  description: 'Dr Jodie Rummer\'s lab',
+export const metadata: Metadata = {
+  title: {
+    default: "Dr. Jodie Rummer | Marine Biologist & Researcher",
+    template: "%s | Dr. Jodie Rummer"
+  },
+  description: 'Dr. Jodie Rummer is a leading marine biologist specializing in fish physiology and adaptation to climate change, with over 15 years of research experience.',
+  keywords: ['Marine Biology', 'Climate Change', 'Fish Physiology', 'Great Barrier Reef', 'Research', 'TEDx Speaker'],
 }
 
 export default function RootLayout({
@@ -18,10 +24,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className="dark:bg-slate-800">
+    <html lang="en" className={outfit.variable} suppressHydrationWarning>
+      <body className="min-h-screen flex flex-col bg-white dark:bg-slate-950">
         <Navbar />
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
+        <main className="flex-grow">
           {children}
         </main>
         <Footer />

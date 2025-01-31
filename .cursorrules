@@ -1,0 +1,57 @@
+# Cursor Rules for Dr Jodie Rummer jodierummer.com (Next.js 15 + React 19)
+
+## ✅ General Best Practices
+- Use **TypeScript** for all code; prefer **interfaces over types**.
+- Minimize `'use client'` usage; **favor Server Components (RSC)**.
+- Always use **Next.js fetch API** for requests.
+- **Early returns** improve readability.
+- Follow **DRY (Don't Repeat Yourself) principle**.
+
+## 📁 Project Structure & Naming Conventions
+- Use **kebab-case** for directories (e.g., `components/research-section`).
+- Use **PascalCase** for React components (e.g., `HeroSection.tsx`).
+- Favor **named exports** for components and utilities.
+
+## ⚡ Next.js 15 Features & Data Fetching
+- Use **cache: 'force-cache'** or **'no-store'** explicitly in fetch requests.
+- Use **SEO-optimized metadata** (`generateMetadata` in layouts/pages).
+- Preload **important resources** (e.g., hero images, fonts).
+- Use **static rendering (getStaticProps)** for articles and publications.
+- Optimize **dynamic content** (e.g., blog posts, events) with **ISR (Incremental Static Regeneration)**.
+
+## 🔥 React 19 Best Practices
+- Use **Suspense** for async operations and **lazy loading**.
+- Favor **useOptimistic** for UI updates before mutation success.
+- Use **useFormStatus** for handling form loading/error states.
+- **Minimize client-side state**; prefer **URL state management** (`nuqs`).
+
+## 🎨 UI & Styling (Tailwind, Shadcn, Radix)
+- Use **Tailwind CSS** with a **mobile-first approach**.
+- Use **Shadcn UI** and **Radix UI** for **accessible, elegant components**.
+- Ensure all **interactive elements** are **keyboard-accessible**.
+- **Prioritize readability** – large text, good spacing, high contrast.
+- Use **custom Tailwind themes** for branding consistency.
+
+## 🚀 Performance & Optimizations
+- Optimize images with **Next.js `<Image>`** component (prefer **WebP**).
+- Implement **lazy loading** for non-critical UI components.
+- Use **dynamic imports** for **code-splitting** where needed.
+- Minimize **third-party dependencies**; prefer **built-in Next.js features**.
+- Enable **stale-while-revalidate** caching for dynamic API calls.
+
+## 🔒 Security & Error Handling
+- **Sanitize user inputs** to prevent **XSS attacks**.
+- Use **error boundaries** to catch and handle UI errors **gracefully**.
+- Implement **proper logging and monitoring** for API requests.
+
+## ♿ Accessibility (a11y)
+- Use **semantic HTML elements** where applicable.
+- Ensure **color contrast meets WCAG 2.1 standards**.
+- Implement **ARIA attributes** correctly for custom components.
+- Ensure **keyboard navigability** of all interactive elements.
+
+## 🛠 Deployment & Configuration (Vercel)
+- Optimize for **Web Vitals** (**LCP, CLS, FID**) before deploying.
+- Follow **Vercel Edge Functions** best practices for serverless execution.
+- Use **environment variables** for secrets; **never commit them**.
+- Use **next/font** for font optimization and layout shift reduction.
