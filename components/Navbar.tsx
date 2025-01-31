@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { HiMenu, HiX } from 'react-icons/hi'
 import ThemeToggle from './ThemeToggle'
+import MainMenu from './MainMenu'
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -25,6 +26,9 @@ export default function Navbar() {
             <span className="font-semibold text-xl">Dr. Jodie Rummer</span>
           </Link>
         </div>
+        
+        <MainMenu />
+
         <div className="flex items-center gap-x-4 lg:gap-x-6">
           <ThemeToggle />
           <div className="flex lg:hidden">
@@ -37,17 +41,6 @@ export default function Navbar() {
               <HiMenu className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
-        </div>
-        <div className="hidden lg:flex lg:gap-x-12">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-sm font-semibold leading-6 text-slate-900 hover:text-blue-600 dark:text-slate-200 dark:hover:text-blue-400 transition-colors"
-            >
-              {item.name}
-            </Link>
-          ))}
         </div>
       </nav>
 

@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /private
+
+# Host
+Host: https://jodierummer.com
+
+# Sitemaps
+Sitemap: https://jodierummer.com/sitemap.xml
+Sitemap: https://jodierummer.com/server-sitemap.xml
