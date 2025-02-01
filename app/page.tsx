@@ -42,7 +42,7 @@ export default function Home() {
                 alt="Dr. Jodie Rummer, Marine Biologist and Researcher"
                 width={500}
                 height={600}
-                className="w-auto h-[600px] rounded-2xl bg-slate-50 object-cover object-top shadow-xl ring-1 ring-slate-400/10"
+                className="w-full h-auto max-h-[500px] sm:max-h-[500px] lg:h-[600px] rounded-2xl bg-slate-50 object-cover object-top shadow-xl ring-1 ring-slate-400/10"
                 priority
               />
             </div>

@@ -61,7 +61,7 @@ const publicationsLinks = [
 
 export default function MainMenu() {
   return (
-    <NavigationMenu.Root className="relative z-50">
+    <NavigationMenu.Root className="relative z-50 hidden lg:block">
       <NavigationMenu.List className="flex flex-row items-center gap-x-2">
         <NavigationMenu.Item>
           <NavigationMenu.Link asChild>
