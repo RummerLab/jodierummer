@@ -1,5 +1,7 @@
 # Cursor Rules for Dr Jodie Rummer jodierummer.com (Next.js 15 + React 19)
 
+Please make sure the design work in both light and dark modes and on desktop, tablet, and mobile.
+
 ## ✅ General Best Practices
 - Use **TypeScript** for all code; prefer **interfaces over types**.
 - Minimize `'use client'` usage; **favor Server Components (RSC)**.

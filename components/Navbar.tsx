@@ -72,17 +72,24 @@ const publicationsLinks = [
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [expandedSection, setExpandedSection] = useState<string | null>(null)
+  const [researchOpen, setResearchOpen] = useState(false)
+  const [publicationsOpen, setPublicationsOpen] = useState(false)
 
   const toggleSection = (section: string) => {
     setExpandedSection(expandedSection === section ? null : section)
   }
 
+  const setIsOpen = (value: boolean) => {
+    setResearchOpen(value)
+    setPublicationsOpen(value)
+  }
+
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md dark:bg-slate-950/80 border-b border-slate-200 dark:border-slate-800">
+    <header className="sticky top-0 z-50 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
-            <span className="font-semibold text-xl">Dr. Jodie Rummer</span>
+            <span className="font-semibold text-xl text-slate-900 dark:text-white">Dr. Jodie Rummer</span>
           </Link>
         </div>
         
@@ -111,17 +118,17 @@ export default function Navbar() {
           <div className="fixed inset-0 bg-black/80 z-[100]" onClick={() => setMobileMenuOpen(false)} />
           
           {/* Menu panel */}
-          <div className="fixed inset-0 z-[101] bg-slate-900">
-            <div className="flex h-full flex-col bg-slate-900">
+          <div className="fixed inset-0 z-[101] bg-white dark:bg-slate-900">
+            <div className="flex h-full flex-col bg-white dark:bg-slate-900">
               {/* Header */}
-              <div className="px-6 pt-6 pb-4 border-b border-slate-800">
+              <div className="px-6 pt-6 pb-4 border-b border-slate-200 dark:border-slate-800">
                 <div className="flex items-center justify-between">
                   <Link href="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
-                    <span className="font-semibold text-xl text-white">Dr. Jodie Rummer</span>
+                    <span className="font-semibold text-xl text-slate-900 dark:text-white">Dr. Jodie Rummer</span>
                   </Link>
                   <button
                     type="button"
-                    className="rounded-md p-2.5 text-slate-400 hover:text-white hover:bg-slate-800/80"
+                    className="rounded-md p-2.5 text-slate-500 hover:text-slate-700 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-800/80"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     <span className="sr-only">Close menu</span>
@@ -131,7 +138,7 @@ export default function Navbar() {
               </div>
 
               {/* Menu content */}
-              <div className="flex-1 px-6 py-8 bg-slate-900">
+              <div className="flex-1 px-6 py-8 bg-white dark:bg-slate-900">
                 <nav className="flex flex-col gap-y-6">
                   {/* Main navigation */}
                   <div className="space-y-2">
@@ -139,7 +146,7 @@ export default function Navbar() {
                       <Link
                         key={item.name}
                         href={item.href}
-                        className="block rounded-lg px-4 py-3.5 text-lg font-medium text-slate-200 hover:bg-slate-800/80 hover:text-white"
+                        className="block rounded-lg px-4 py-3.5 text-lg font-medium text-slate-900 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800/80 dark:hover:text-white"
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         {item.name}
@@ -148,36 +155,44 @@ export default function Navbar() {
                   </div>
 
                   {/* Research Section */}
-                  <div className="space-y-2">
-                    <button
-                      className="flex w-full items-center justify-between rounded-lg px-4 py-3.5 text-lg font-medium text-slate-200 hover:bg-slate-800/80 hover:text-white"
-                      onClick={() => toggleSection('research')}
-                    >
-                      Research
-                      <FaChevronDown
-                        className={`h-4 w-4 transition-transform duration-200 ${
-                          expandedSection === 'research' ? 'rotate-180' : ''
-                        }`}
-                      />
-                    </button>
-                    {expandedSection === 'research' && (
-                      <div className="pl-4 space-y-2 mt-2">
+                  <div className="flex flex-col">
+                    <div className="flex items-center">
+                      <Link
+                        href="/research"
+                        onClick={() => setIsOpen(false)}
+                        className="flex-1 px-4 py-3 text-base font-semibold text-slate-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400"
+                      >
+                        Research
+                      </Link>
+                      <button
+                        onClick={() => setResearchOpen(!researchOpen)}
+                        className="px-4 py-3 text-slate-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 border-l border-slate-200 dark:border-slate-700"
+                      >
+                        <FaChevronDown
+                          className={`h-4 w-4 transition-transform duration-200 ${
+                            researchOpen ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+                    </div>
+                    {researchOpen && (
+                      <div className="pl-4 pb-2">
                         {researchLinks.map((item) => (
                           <Link
                             key={item.title}
                             href={item.href}
+                            onClick={() => setIsOpen(false)}
                             target={item.isExternal ? "_blank" : undefined}
-                            rel={item.isExternal ? "noopener noreferrer" : undefined}
-                            className="block rounded-lg px-4 py-3 text-base text-slate-300 hover:bg-slate-800/80 hover:text-white"
-                            onClick={() => setMobileMenuOpen(false)}
+                            rel={item.isExternal ? "noopener" : undefined}
+                            className="flex flex-col px-4 py-3 text-sm text-slate-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400"
                           >
-                            <div className="font-medium flex items-center gap-1">
+                            <span className="font-semibold flex items-center gap-1">
                               {item.title}
-                              {item.isExternal && <span className="text-xs">↗️</span>}
-                            </div>
-                            <p className="mt-1 text-sm text-slate-400">
+                              {item.isExternal && <span className="text-sm">↗️</span>}
+                            </span>
+                            <span className="mt-1 text-sm text-slate-600 dark:text-slate-400">
                               {item.description}
-                            </p>
+                            </span>
                           </Link>
                         ))}
                       </div>
@@ -185,36 +200,44 @@ export default function Navbar() {
                   </div>
 
                   {/* Publications Section */}
-                  <div className="space-y-2">
-                    <button
-                      className="flex w-full items-center justify-between rounded-lg px-4 py-3.5 text-lg font-medium text-slate-200 hover:bg-slate-800/80 hover:text-white"
-                      onClick={() => toggleSection('publications')}
-                    >
-                      Publications
-                      <FaChevronDown
-                        className={`h-4 w-4 transition-transform duration-200 ${
-                          expandedSection === 'publications' ? 'rotate-180' : ''
-                        }`}
-                      />
-                    </button>
-                    {expandedSection === 'publications' && (
-                      <div className="pl-4 space-y-2 mt-2">
+                  <div className="flex flex-col">
+                    <div className="flex items-center">
+                      <Link
+                        href="/publications"
+                        onClick={() => setIsOpen(false)}
+                        className="flex-1 px-4 py-3 text-base font-semibold text-slate-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400"
+                      >
+                        Publications
+                      </Link>
+                      <button
+                        onClick={() => setPublicationsOpen(!publicationsOpen)}
+                        className="px-4 py-3 text-slate-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 border-l border-slate-200 dark:border-slate-700"
+                      >
+                        <FaChevronDown
+                          className={`h-4 w-4 transition-transform duration-200 ${
+                            publicationsOpen ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+                    </div>
+                    {publicationsOpen && (
+                      <div className="pl-4 pb-2">
                         {publicationsLinks.map((item) => (
                           <Link
                             key={item.title}
                             href={item.href}
+                            onClick={() => setIsOpen(false)}
                             target={item.isExternal ? "_blank" : undefined}
-                            rel={item.isExternal ? "noopener noreferrer" : undefined}
-                            className="block rounded-lg px-4 py-3 text-base text-slate-300 hover:bg-slate-800/80 hover:text-white"
-                            onClick={() => setMobileMenuOpen(false)}
+                            rel={item.isExternal ? "noopener" : undefined}
+                            className="flex flex-col px-4 py-3 text-sm text-slate-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400"
                           >
-                            <div className="font-medium flex items-center gap-1">
+                            <span className="font-semibold flex items-center gap-1">
                               {item.title}
-                              {item.isExternal && <span className="text-xs">↗️</span>}
-                            </div>
-                            <p className="mt-1 text-sm text-slate-400">
+                              {item.isExternal && <span className="text-sm">↗️</span>}
+                            </span>
+                            <span className="mt-1 text-sm text-slate-600 dark:text-slate-400">
                               {item.description}
-                            </p>
+                            </span>
                           </Link>
                         ))}
                       </div>

@@ -86,13 +86,20 @@ export default function MainMenu() {
         </NavigationMenu.Item>
 
         <NavigationMenu.Item className="relative">
-          <NavigationMenu.Trigger className="group flex items-center gap-x-1 px-3 py-2 text-sm font-semibold text-slate-900 hover:text-blue-600 dark:text-slate-200 dark:hover:text-blue-400 transition-colors outline-none">
-            Research
-            <FaChevronDown
-              className="h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
-              aria-hidden="true"
-            />
-          </NavigationMenu.Trigger>
+          <div className="flex">
+            <Link
+              href="/research"
+              className="group flex items-center gap-x-1 px-3 py-2 text-sm font-semibold text-slate-900 hover:text-blue-600 dark:text-slate-200 dark:hover:text-blue-400 transition-colors outline-none"
+            >
+              Research
+            </Link>
+            <NavigationMenu.Trigger className="group flex items-center px-2 py-2 text-sm font-semibold text-slate-900 hover:text-blue-600 dark:text-slate-200 dark:hover:text-blue-400 transition-colors outline-none border-l border-slate-200 dark:border-slate-700">
+              <FaChevronDown
+                className="h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
+                aria-hidden="true"
+              />
+            </NavigationMenu.Trigger>
+          </div>
           <NavigationMenu.Content className="absolute left-0 top-full w-[400px] rounded-lg bg-white dark:bg-slate-800 shadow-lg ring-1 ring-slate-900/5 overflow-hidden data-[motion=from-start]:animate-enterFromLeft data-[motion=from-end]:animate-enterFromRight data-[motion=to-start]:animate-exitToLeft data-[motion=to-end]:animate-exitToRight">
             <div className="p-4">
               <div className="grid grid-cols-1 gap-4">
@@ -119,13 +126,20 @@ export default function MainMenu() {
         </NavigationMenu.Item>
 
         <NavigationMenu.Item className="relative">
-          <NavigationMenu.Trigger className="group flex items-center gap-x-1 px-3 py-2 text-sm font-semibold text-slate-900 hover:text-blue-600 dark:text-slate-200 dark:hover:text-blue-400 transition-colors outline-none">
-            Publications
-            <FaChevronDown
-              className="h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
-              aria-hidden="true"
-            />
-          </NavigationMenu.Trigger>
+          <div className="flex">
+            <Link
+              href="/publications"
+              className="group flex items-center gap-x-1 px-3 py-2 text-sm font-semibold text-slate-900 hover:text-blue-600 dark:text-slate-200 dark:hover:text-blue-400 transition-colors outline-none"
+            >
+              Publications
+            </Link>
+            <NavigationMenu.Trigger className="group flex items-center px-2 py-2 text-sm font-semibold text-slate-900 hover:text-blue-600 dark:text-slate-200 dark:hover:text-blue-400 transition-colors outline-none border-l border-slate-200 dark:border-slate-700">
+              <FaChevronDown
+                className="h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
+                aria-hidden="true"
+              />
+            </NavigationMenu.Trigger>
+          </div>
           <NavigationMenu.Content className="absolute left-0 top-full w-[400px] rounded-lg bg-white dark:bg-slate-800 shadow-lg ring-1 ring-slate-900/5 overflow-hidden data-[motion=from-start]:animate-enterFromLeft data-[motion=from-end]:animate-enterFromRight data-[motion=to-start]:animate-exitToLeft data-[motion=to-end]:animate-exitToRight">
             <div className="p-4">
               <div className="grid grid-cols-1 gap-4">
