@@ -29,7 +29,7 @@ export default function Footer() {
                 href={item.href}
                 className="text-slate-400 hover:text-blue-500 transition-colors"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
               >
                 <span className="sr-only">{item.name}</span>
                 <Icon className="h-6 w-6" aria-hidden="true" />
@@ -43,7 +43,7 @@ export default function Footer() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm leading-6 text-slate-600 hover:text-blue-500 dark:text-slate-400 dark:hover:text-blue-400 transition-colors"
+                className="text-sm leading-6 text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400"
               >
                 {item.name}
               </Link>

@@ -67,7 +67,7 @@ export default function ContactPage() {
                                             href={link.href}
                                             className="hover:text-blue-600 dark:hover:text-blue-400"
                                             target="_blank"
-                                            rel="noopener noreferrer"
+                                            rel="noopener"
                                         >
                                             {link.name}
                                         </Link>
@@ -128,12 +128,21 @@ export default function ContactPage() {
                                 href="https://scholar.google.ca/citations?hl=en&authuser=1&user=ynWS968AAAAJ"
                                 className="text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
                                 target="_blank"
-                                rel="noopener noreferrer"
+                                rel="noopener"
                             >
                                 Google Scholar Profile →
                             </Link>
                         </div>
                     </div>
+
+                    <Link
+                        href="https://www.linkedin.com/in/jodie-rummer/"
+                        target="_blank"
+                        rel="noopener"
+                        className="text-blue-600 hover:text-blue-500"
+                    >
+                        LinkedIn Profile
+                    </Link>
                 </div>
             </div>
         </div>
