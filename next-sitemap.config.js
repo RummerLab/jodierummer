@@ -2,7 +2,8 @@
 module.exports = {
     siteUrl: 'https://jodierummer.com',
     generateRobotsTxt: true,
-    sitemapSize: 7000,
+    generateIndexSitemap: false,
+    autoLastmod: true,
     changefreq: 'monthly',
     priority: 0.5,
     exclude: ['/private*'],
