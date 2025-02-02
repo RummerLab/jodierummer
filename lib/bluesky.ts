@@ -1,7 +1,14 @@
-import { BskyAgent, AppBskyFeedDefs } from '@atproto/api'
+import { AtpAgent, AppBskyFeedDefs } from '@atproto/api'
 import { unstable_cache } from 'next/cache'
 
-const agent = new BskyAgent({ service: 'https://public.api.bsky.app' })
+// For authenticated requests, we use the PDS endpoint
+const agent = new AtpAgent({ 
+  service: 'https://bsky.social',
+  persistSession: (evt, sess) => {
+    // Session is handled per request
+    return Promise.resolve()
+  }
+})
 
 interface BlueskyPost {
   text: string
@@ -28,14 +35,18 @@ export const getBlueskyPosts = unstable_cache(
     }
 
     try {
-      await agent.login({
+      const { success } = await agent.login({
         identifier: process.env.BLUESKY_USERNAME,
-        password: process.env.BLUESKY_APP_PASSWORD,
+        password: process.env.BLUESKY_APP_PASSWORD
       })
 
-      const response = await agent.getAuthorFeed({
+      if (!success) {
+        throw new Error('Login failed')
+      }
+
+      const response = await agent.app.bsky.feed.getAuthorFeed({
         actor: process.env.BLUESKY_USERNAME,
-        limit: 20,
+        limit: 20
       })
 
       return response.data.feed.map((post: AppBskyFeedDefs.FeedViewPost) => {
