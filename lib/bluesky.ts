@@ -1,6 +1,7 @@
-import { BskyAgent } from '@atproto/api'
+import { BskyAgent, AppBskyFeedDefs } from '@atproto/api'
+import { unstable_cache } from 'next/cache'
 
-const agent = new BskyAgent({ service: 'https://bsky.social' })
+const agent = new BskyAgent({ service: 'https://public.api.bsky.app' })
 
 interface BlueskyPost {
   text: string
@@ -20,46 +21,53 @@ interface BlueskyPost {
   }
 }
 
-export async function getBlueskyPosts(): Promise<BlueskyPost[]> {
-  if (!process.env.BLUESKY_USERNAME || !process.env.BLUESKY_APP_PASSWORD) {
-    throw new Error('Bluesky credentials not configured')
+export const getBlueskyPosts = unstable_cache(
+  async (): Promise<BlueskyPost[]> => {
+    if (!process.env.BLUESKY_USERNAME || !process.env.BLUESKY_APP_PASSWORD) {
+      throw new Error('Bluesky credentials not configured')
+    }
+
+    try {
+      await agent.login({
+        identifier: process.env.BLUESKY_USERNAME,
+        password: process.env.BLUESKY_APP_PASSWORD,
+      })
+
+      const response = await agent.getAuthorFeed({
+        actor: process.env.BLUESKY_USERNAME,
+        limit: 20,
+      })
+
+      return response.data.feed.map((post: AppBskyFeedDefs.FeedViewPost) => {
+        const record = post.post.record as any
+        const embed = post.post.embed as any
+
+        return {
+          text: record.text || '',
+          createdAt: record.createdAt || new Date().toISOString(),
+          uri: post.post.uri,
+          cid: post.post.cid,
+          indexedAt: post.post.indexedAt,
+          replyCount: post.post.replyCount || 0,
+          repostCount: post.post.repostCount || 0,
+          likeCount: post.post.likeCount || 0,
+          embed: embed?.images ? {
+            images: embed.images.map((img: any) => ({
+              thumb: img.thumb,
+              fullsize: img.fullsize,
+              alt: img.alt || '',
+            }))
+          } : undefined,
+        }
+      })
+    } catch (error) {
+      console.error('Error fetching Bluesky posts:', error)
+      return []
+    }
+  },
+  ['bluesky-posts'],
+  {
+    revalidate: 86400, // 24 hours in seconds
+    tags: ['bluesky']
   }
-
-  try {
-    await agent.login({
-      identifier: process.env.BLUESKY_USERNAME,
-      password: process.env.BLUESKY_APP_PASSWORD,
-    })
-
-    const response = await agent.getAuthorFeed({
-      actor: process.env.BLUESKY_USERNAME,
-      limit: 20,
-    })
-
-    return response.data.feed.map((post) => {
-      const record = post.post.record as any
-      const embed = post.post.embed as any
-
-      return {
-        text: record.text || '',
-        createdAt: record.createdAt || new Date().toISOString(),
-        uri: post.post.uri,
-        cid: post.post.cid,
-        indexedAt: post.post.indexedAt,
-        replyCount: post.post.replyCount || 0,
-        repostCount: post.post.repostCount || 0,
-        likeCount: post.post.likeCount || 0,
-        embed: embed?.images ? {
-          images: embed.images.map((img: any) => ({
-            thumb: img.thumb,
-            fullsize: img.fullsize,
-            alt: img.alt || '',
-          }))
-        } : undefined,
-      }
-    })
-  } catch (error) {
-    console.error('Error fetching Bluesky posts:', error)
-    return []
-  }
-} 
+) 
