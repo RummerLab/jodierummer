@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaArrowRight } from 'react-icons/fa'
+import { BlueskyFeed } from '@/components/BlueskyFeed'
 
 export const metadata = {
   title: "Dr Jodie Rummer - Marine Biologist, TEDx Speaker, and Fish Friend",
@@ -116,6 +117,16 @@ export default function Home() {
               <p className="mt-3 text-sm leading-6 text-slate-300">Supporting and inspiring women in scientific research</p>
             </Link>
           </div>
+        </div>
+      </div>
+
+      {/* Latest Updates Section */}
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24 sm:pb-32">
+        <div className="mx-auto max-w-2xl">
+          <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white mb-8">
+            Latest Updates
+          </h2>
+          <BlueskyFeed />
         </div>
       </div>
     </div>
