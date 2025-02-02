@@ -13,6 +13,8 @@ const footerLinks = [
   { name: 'About', href: '/about' },
   { name: 'Research', href: '/research' },
   { name: 'Publications', href: '/publications' },
+  { name: 'Women in Science', href: '/women-in-science' },
+  { name: 'Media', href: '/media' },
   { name: 'Contact', href: '/contact' },
 ]
 

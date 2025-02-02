@@ -10,6 +10,11 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'cdn.bsky.app',
             },
+            {
+                protocol: 'https',
+                hostname: 'rummerlab.com',
+                pathname: '/images/**',
+            },
         ],
     },
     redirects: async () => [
