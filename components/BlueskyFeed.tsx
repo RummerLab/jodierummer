@@ -34,6 +34,11 @@ export async function BlueskyFeed() {
                   <span>Reposted</span>
                 </div>
               )}
+              {post.repostText && (
+                <p className="text-slate-600 dark:text-slate-400 text-sm whitespace-pre-wrap mb-4 border-l-2 border-slate-300 dark:border-slate-700 pl-3">
+                  {post.repostText}
+                </p>
+              )}
               <p className="text-slate-900 dark:text-white whitespace-pre-wrap">{post.text}</p>
               
               {post.embed?.images && (

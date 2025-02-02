@@ -12,6 +12,7 @@ const agent = new AtpAgent({
 
 interface BlueskyPost {
   text: string
+  repostText?: string
   createdAt: string
   uri: string
   cid: string
@@ -78,7 +79,8 @@ export const getBlueskyPosts = unstable_cache(
             }
 
             const result: BlueskyPost = {
-              text: record.text || '',
+              text: isRepost ? repostRecord?.text || '' : record.text || '',
+              repostText: isRepost ? record.text || '' : undefined,
               createdAt: postData?.createdAt || new Date().toISOString(),
               uri: postUri || post.post.uri,
               cid: post.post.cid,
