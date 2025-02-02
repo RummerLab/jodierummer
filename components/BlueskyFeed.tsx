@@ -22,12 +22,18 @@ export async function BlueskyFeed() {
           className="p-6 bg-slate-50 dark:bg-slate-900 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition"
         >
           <Link
-            href={`https://bsky.app/profile/${process.env.BLUESKY_USERNAME}/post/${post.uri.split('/').pop()}`}
+            href={`https://bsky.app/profile/${post.author.handle}/post/${post.uri?.split('/')?.pop() || ''}`}
             target="_blank"
             rel="noopener noreferrer"
             className="block"
           >
             <div className="space-y-4">
+              {post.isRepost && (
+                <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                  <FaRetweet className="h-4 w-4" />
+                  <span>Reposted</span>
+                </div>
+              )}
               <p className="text-slate-900 dark:text-white whitespace-pre-wrap">{post.text}</p>
               
               {post.embed?.images && (
