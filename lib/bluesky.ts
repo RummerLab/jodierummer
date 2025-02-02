@@ -41,19 +41,19 @@ export async function getBlueskyPosts(): Promise<BlueskyPost[]> {
       const embed = post.post.embed as any
 
       return {
-        text: record.text,
-        createdAt: record.createdAt,
+        text: record.text || '',
+        createdAt: record.createdAt || new Date().toISOString(),
         uri: post.post.uri,
         cid: post.post.cid,
         indexedAt: post.post.indexedAt,
-        replyCount: post.post.replyCount,
-        repostCount: post.post.repostCount,
-        likeCount: post.post.likeCount,
+        replyCount: post.post.replyCount || 0,
+        repostCount: post.post.repostCount || 0,
+        likeCount: post.post.likeCount || 0,
         embed: embed?.images ? {
           images: embed.images.map((img: any) => ({
             thumb: img.thumb,
             fullsize: img.fullsize,
-            alt: img.alt,
+            alt: img.alt || '',
           }))
         } : undefined,
       }
