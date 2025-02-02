@@ -15,6 +15,11 @@ const nextConfig = {
                 hostname: 'rummerlab.com',
                 pathname: '/images/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'physiology.org',
+                pathname: '/images/**',
+            },
         ],
     },
     redirects: async () => [
