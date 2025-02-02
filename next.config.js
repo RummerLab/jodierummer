@@ -50,12 +50,12 @@ const nextConfig = {
         },
         {
             source: '/media.html',
-            destination: '/',
+            destination: '/media',
             permanent: true,
         },
         {
             source: '/publications.html',
-            destination: '/',
+            destination: '/publications',
             permanent: true,
         },
         {
@@ -65,7 +65,7 @@ const nextConfig = {
         },
         {
             source: '/research.html',
-            destination: '/',
+            destination: '/research',
             permanent: true,
         },
         {
@@ -85,7 +85,7 @@ const nextConfig = {
         },
         {
             source: '/women-in-science.html',
-            destination: '/',
+            destination: '/women-in-science',
             permanent: true,
         },
         {

@@ -218,7 +218,8 @@ export default function PublicationsPage() {
           includedInDataCatalog: {
             '@type': 'DataCatalog',
             name: 'Google Scholar'
-          }
+          },
+          license: 'https://creativecommons.org/licenses/by/4.0/'
         })}
       </Script>
     </>
