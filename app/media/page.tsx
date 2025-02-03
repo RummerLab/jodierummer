@@ -255,7 +255,7 @@ export default function MediaPage() {
                             '@type': 'VideoObject',
                             name: 'Athletes of the Great Barrier Reef',
                             description: 'TEDx talk by Dr. Jodie Rummer about marine life adaptation',
-                            uploadDate: '2014-10-03',
+                            uploadDate: '2014-11-14T00:00:00+10:00',
                             thumbnailUrl: 'https://img.youtube.com/vi/-4EEP9CpI7s/maxresdefault.jpg',
                             embedUrl: 'https://www.youtube.com/embed/-4EEP9CpI7s'
                         }
