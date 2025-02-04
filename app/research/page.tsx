@@ -14,61 +14,64 @@ export const metadata = {
 
 const researchAreas = [
     {
-        title: "Fish Physiology",
-        description: "Understanding how fish function at cellular and systemic levels, with a focus on respiratory physiology and metabolism.",
+        title: "Ecological & Conservation Physiology",
+        description: "Understanding physiological and biochemical mechanisms fish use to respond to natural and anthropogenic environmental change.",
         details: [
-            "Oxygen uptake and delivery mechanisms",
-            "Metabolic performance under stress",
-            "Cardiovascular function and adaptation",
+            "Temperature adaptation and acclimation",
+            "CO2 and ocean acidification impacts",
+            "Swimming performance and exercise",
+            "Larval fish biology and development"
         ],
-        id: "fish-physiology"
+        id: "eco-physiology"
     },
     {
-        title: "Climate Change Impact",
-        description: "Investigating how marine life responds to environmental changes and their capacity for adaptation.",
+        title: "Climate Change Adaptation",
+        description: "Investigating how marine species acclimate and adapt to climate-related stressors.",
         details: [
-            "Ocean acidification effects",
-            "Temperature stress responses",
-            "Behavioral adaptations",
+            "Geographic gradient studies",
+            "Local extreme environment research",
+            "Population-level adaptations",
+            "Future climate scenario modeling"
         ],
-        id: "climate-change"
+        id: "climate-adaptation"
     },
     {
-        title: "Conservation Biology",
-        description: "Applying physiological research to conservation efforts and policy recommendations.",
+        title: "Shark & Ray Research",
+        description: "Studying the physiological tolerance of sharks and rays in changing environments.",
         details: [
-            "Population resilience studies",
-            "Habitat preservation strategies",
-            "Species management recommendations",
+            "Nursery habitat research",
+            "Temperature and pH tolerance",
+            "Oxygen regulation studies",
+            "Movement and behavior patterns"
         ],
-        id: "conservation"
+        id: "shark-research"
     },
 ]
 
-const currentProjects = [
+const majorGrants = [
     {
-        title: "Coral Reef Fish Adaptation",
-        description: "Investigating how reef fish species adapt to rapid environmental changes in the Great Barrier Reef.",
-        status: "Active",
-        startDate: "2022-01",
-        location: "Great Barrier Reef",
-        id: "coral-reef-adaptation"
+        title: "King Abdullah University of Science and Technology CRG4",
+        amount: "$1,800,000 AUD",
+        period: "2016-2019",
+        description: "Genomic evidence for adaptation of marine fishes to ocean acidification",
     },
     {
-        title: "Shark Physiology",
-        description: "Studying the physiological mechanisms that enable sharks to maintain performance in changing environments.",
-        status: "Active",
-        startDate: "2021-06",
-        location: "Coral Sea",
-        id: "shark-physiology"
+        title: "Australian Research Council Discovery Fellowship",
+        amount: "$358,536 AUD",
+        period: "2015-2017",
+        description: "Physiological performance of reef fishes under ocean acidification",
     },
     {
-        title: "Ocean Acidification",
-        description: "Examining the effects of ocean acidification on marine species' development and survival.",
-        status: "Active",
-        startDate: "2023-01",
-        location: "Laboratory Studies",
-        id: "ocean-acidification"
+        title: "L'Oréal-UNESCO Women in Science Fellowship",
+        amount: "$25,000 AUD",
+        period: "2015-2016",
+        description: "Growing up strong in a changing climate: Maintaining physiological performance in juvenile reef sharks",
+    },
+    {
+        title: "Australian Research Council Super Science Fellowship",
+        amount: "$835,200 AUD",
+        period: "2011-2015",
+        description: "Resilience of Coral Reef Ecosystems to Climate Change",
     },
 ]
 
@@ -80,99 +83,117 @@ export default function ResearchPage() {
                 <div className="relative isolate overflow-hidden bg-gradient-to-b from-blue-100/20 dark:from-blue-950/20">
                     <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
                         <div className="mx-auto max-w-2xl lg:mx-0">
-                            <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl" id="research-areas">
-                                Research Areas
+                            <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
+                                Research Overview
                             </h1>
                             <p className="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-300">
-                                Dr. Rummer's research combines physiology, ecology, and conservation science to understand how marine life adapts to environmental changes.
+                                Dr. Rummer's research combines ecological and conservation physiology with an emphasis on issues affecting marine, estuarine, and freshwater fish populations. Her work focuses on understanding how fish respond to environmental change and the implications for conservation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Research Statement section */}
+                <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24">
+                    <div className="mx-auto max-w-3xl">
+                        <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white mb-8">Research Statement</h2>
+                        <div className="prose dark:prose-invert max-w-none">
+                            <p className="text-slate-600 dark:text-slate-300 mb-6">
+                                My research aims to understand the physiological mechanisms that fishes use to acclimate and adapt to climate-related stressors and to make predictions as to which species and populations may be most at risk from climate change and other anthropogenic stressors.
+                            </p>
+                            <p className="text-slate-600 dark:text-slate-300 mb-6">
+                                My approach consists of an innovative combination of field- and laboratory-based experimentation, including harnessing geographic gradients and local extreme environments as analogues for future change, investigating the extreme performers within aquatic environments, and integrating conventional and state-of-the-art physiological, biochemical, and molecular techniques.
                             </p>
                         </div>
                     </div>
                 </div>
 
                 {/* Research Areas section */}
-                <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 sm:py-32">
-                    <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-                        {researchAreas.map((area, index) => (
-                            <div key={area.title} className="lg:pr-8 lg:pt-4">
-                                <div className="lg:max-w-lg">
-                                    <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-                                        {area.title}
-                                    </h2>
-                                    <p className="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-300">
-                                        {area.description}
-                                    </p>
-                                    <ul role="list" className="mt-8 space-y-4 text-slate-600 dark:text-slate-300">
-                                        {area.details.map((detail) => (
-                                            <li key={detail} className="flex gap-x-3">
-                                                <span className="mt-1 h-5 w-5 flex-none text-blue-600">•</span>
-                                                <span>{detail}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
+                <div className="bg-slate-50 dark:bg-slate-900">
+                    <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24">
+                        <h2 id="research-areas" className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white mb-16">Research Areas</h2>
+                        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+                            {researchAreas.map((area) => (
+                                <div key={area.title} id={area.id} className="lg:pr-8 lg:pt-4 scroll-mt-16">
+                                    <div className="lg:max-w-lg">
+                                        <h3 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+                                            {area.title}
+                                        </h3>
+                                        <p className="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-300">
+                                            {area.description}
+                                        </p>
+                                        <ul role="list" className="mt-8 space-y-4 text-slate-600 dark:text-slate-300">
+                                            {area.details.map((detail) => (
+                                                <li key={detail} className="flex gap-x-3">
+                                                    <span className="mt-1 h-5 w-5 flex-none text-blue-600">•</span>
+                                                    <span>{detail}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </div>
 
-                {/* Current Projects section */}
-                <div id="projects" className="bg-slate-50 dark:bg-slate-900">
-                    <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 sm:py-32">
-                        <div className="mx-auto max-w-2xl lg:text-center">
-                            <h2 className="text-base font-semibold leading-7 text-blue-600">Current Research</h2>
-                            <p className="mt-2 text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
-                                Active Research Projects
-                            </p>
-                            <p className="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-300">
-                                Our ongoing research projects focus on understanding marine life adaptation and conservation in the face of environmental changes.
-                            </p>
-                        </div>
-                        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-                            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-                                {currentProjects.map((project) => (
-                                    <div key={project.title} className="flex flex-col">
-                                        <dt className="text-xl font-semibold leading-7 text-slate-900 dark:text-white">
-                                            {project.title}
-                                        </dt>
-                                        <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-slate-600 dark:text-slate-300">
-                                            <p className="flex-auto">{project.description}</p>
-                                        </dd>
+                {/* Major Grants section */}
+                <div id="grants" className="mx-auto max-w-7xl px-6 lg:px-8 py-24 scroll-mt-16">
+                    <div className="mx-auto max-w-2xl lg:mx-0">
+                        <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white mb-8">Major Research Grants</h2>
+                        <p className="text-lg text-slate-600 dark:text-slate-300 mb-16">
+                            Dr. Rummer's research has been supported by prestigious grants and fellowships, enabling groundbreaking work in marine biology and conservation.
+                        </p>
+                        <div className="grid gap-8 lg:grid-cols-2">
+                            {majorGrants.map((grant) => (
+                                <div key={grant.title} className="relative flex items-center space-x-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 hover:border-slate-400 dark:hover:border-slate-600">
+                                    <div className="min-w-0 flex-1">
+                                        <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                                            {grant.title}
+                                        </h3>
+                                        <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                                            {grant.period} • {grant.amount}
+                                        </p>
+                                        <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+                                            {grant.description}
+                                        </p>
                                     </div>
-                                ))}
-                            </dl>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
 
                 {/* Call to Action */}
-                <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 sm:py-32">
-                    <div className="mx-auto max-w-2xl text-center">
-                        <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
-                            Interested in our research?
-                        </h2>
-                        <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-300">
-                            Learn more about our findings and their implications for marine conservation.
-                        </p>
-                        <div className="mt-10 flex items-center justify-center gap-x-6">
-                            <Link
-                                href="/publications"
-                                className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-                            >
-                                View Publications
-                            </Link>
-                            <Link
-                                href="/contact"
-                                className="text-sm font-semibold leading-6 text-slate-900 dark:text-white"
-                            >
-                                Contact Us <span aria-hidden="true">→</span>
-                            </Link>
+                <div className="bg-slate-50 dark:bg-slate-900">
+                    <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24">
+                        <div className="mx-auto max-w-2xl text-center">
+                            <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
+                                Interested in our research?
+                            </h2>
+                            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-300">
+                                Learn more about our findings and their implications for marine conservation.
+                            </p>
+                            <div className="mt-10 flex items-center justify-center gap-x-6">
+                                <Link
+                                    href="/publications"
+                                    className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                                >
+                                    View Publications
+                                </Link>
+                                <Link
+                                    href="/contact"
+                                    className="text-sm font-semibold leading-6 text-slate-900 dark:text-white"
+                                >
+                                    Contact Us <span aria-hidden="true">→</span>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Add structured data for research areas */}
+            {/* Add structured data */}
             <Script id="schema-research" type="application/ld+json">
                 {JSON.stringify({
                     '@context': 'https://schema.org',
@@ -197,30 +218,20 @@ export default function ResearchPage() {
                         name: area.title,
                         description: area.description,
                         identifier: area.id
-                    }))
-                })}
-            </Script>
-
-            {/* Add structured data for current projects */}
-            <Script id="schema-current-projects" type="application/ld+json">
-                {JSON.stringify({
-                    '@context': 'https://schema.org',
-                    '@type': 'ItemList',
-                    itemListElement: currentProjects.map((project, index) => ({
-                        '@type': 'ListItem',
-                        position: index + 1,
-                        item: {
-                            '@type': 'ResearchProject',
-                            name: project.title,
-                            description: project.description,
-                            identifier: project.id,
-                            locationCreated: {
-                                '@type': 'Place',
-                                name: project.location
-                            },
-                            startTime: project.startDate,
-                            status: project.status
-                        }
+                    })),
+                    funding: majorGrants.map(grant => ({
+                        '@type': 'Grant',
+                        name: grant.title,
+                        amount: {
+                            '@type': 'MonetaryAmount',
+                            currency: 'AUD',
+                            value: grant.amount.replace(/[^0-9]/g, '')
+                        },
+                        funder: {
+                            '@type': 'Organization',
+                            name: grant.title.split(' ')[0]
+                        },
+                        description: grant.description
                     }))
                 })}
             </Script>

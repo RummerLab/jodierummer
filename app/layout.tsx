@@ -7,6 +7,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Script from 'next/script'
 import { GoogleAnalytics } from '@next/third-parties/google'
+import { MainNav } from './components/navigation/MainNav'
 
 const outfit = Outfit({ 
   subsets: ['latin'],
@@ -105,8 +106,9 @@ export default function RootLayout({
         </Script>
       </head>
       <body className="min-h-screen flex flex-col bg-white dark:bg-slate-950">
+        <MainNav />
         <Navbar />
-        <main className="flex-grow">
+        <main className="flex-grow pt-16">
           {children}
         </main>
         <Footer />
