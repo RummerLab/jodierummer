@@ -69,7 +69,7 @@ export default function PublicationsPage() {
               Publications
             </h1>
             <p className="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-300">
-              Dr. Rummer's research has been published in leading scientific journals, contributing to our understanding of marine biology, fish physiology, and climate change impacts. Her work has received 5,918 citations with an h-index of 45 and an i10-index of 100 (Google Scholar, November 2024).
+              Dr. Rummer's research has been published in leading scientific journals, contributing to our understanding of marine biology, fish physiology, and climate change impacts. Her work has received 5,918 citations with an h-index of 45 and an i10-index of 100.
             </p>
           </div>
           <div className="mx-auto mt-16 max-w-2xl lg:mx-0">
