@@ -113,19 +113,19 @@ export function TeamMember({ member }: TeamMemberProps) {
                   </TooltipContent>
                 </Tooltip>
               )}
-              {member.links.x && (
+              {member.links.bluesky && (
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Link 
-                      href={member.links.x}
+                      href={member.links.bluesky}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Button variant="outline" size="sm">X/Twitter</Button>
+                      <Button variant="outline" size="sm">Bluesky</Button>
                     </Link>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>Follow on X/Twitter</p>
+                    <p>Follow on Bluesky</p>
                   </TooltipContent>
                 </Tooltip>
               )}

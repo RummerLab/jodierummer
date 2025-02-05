@@ -11,13 +11,11 @@ const videos = [
     {
         title: "Fish Gills",
         author: "Leteisha Prescott",
-        twitter: "@TeishPrescott",
         vimeoUrl: "https://vimeo.com/167221742",
     },
     {
         title: "Mudskipper Movie Trailer",
         author: "Tiffany Nay",
-        twitter: "@TiffanyJNay",
         vimeoUrl: "https://vimeo.com/167221741",
     },
     {
@@ -95,8 +93,7 @@ export default function MediaPage() {
                 <section aria-labelledby="scicomm-title" className="mb-20">
                     <h2 id="scicomm-title" className="text-3xl font-semibold text-slate-900 dark:text-white mb-6">RummerLab Science Communication Challenge</h2>
                     <p className="text-lg text-slate-700 dark:text-slate-300 mb-10 max-w-3xl">
-                        The <Link href="https://twitter.com/search?q=%23RummerLab" className="text-blue-600 hover:text-blue-500 font-medium">#RummerLab</Link> science 
-                        communication challenge showcases PhD and MSc research through 30-second videos.
+                        The #RummerLab science communication challenge showcases PhD and MSc research through 30-second videos.
                     </p>
                     
                     <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -104,16 +101,7 @@ export default function MediaPage() {
                             <div key={video.title} className="bg-slate-50 dark:bg-slate-900 rounded-xl p-6 space-y-4">
                                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white">{video.title}</h3>
                                 <div className="flex flex-col space-y-2">
-                                    <p className="text-slate-700 dark:text-slate-300">By {video.author} {video.twitter && (
-                                        <Link 
-                                            href={`https://twitter.com/${video.twitter.replace('@', '')}`}
-                                            target="_blank"
-                                            rel="noopener"
-                                            className="text-blue-600 hover:text-blue-500 font-medium"
-                                        >
-                                            {video.twitter}
-                                        </Link>
-                                    )}</p>
+                                    <p className="text-slate-700 dark:text-slate-300">By {video.author}</p>
                                     <Link 
                                         href={video.vimeoUrl}
                                         target="_blank"
@@ -199,12 +187,12 @@ export default function MediaPage() {
                     <div className="bg-slate-50 dark:bg-slate-900 rounded-xl p-8">
                         <h2 className="text-2xl font-semibold text-slate-900 dark:text-white mb-6">Social Media</h2>
                         <Link 
-                            href="https://twitter.com/physiologyfish"
+                            href="https://bsky.app/profile/physiologyfish.bsky.social/"
                             target="_blank"
                             rel="noopener"
                             className="inline-flex items-center text-blue-600 hover:text-blue-500 font-medium gap-2"
                         >
-                            Follow @physiologyfish on Twitter
+                            Follow @physiologyfish on Bluesky
                             <span>↗</span>
                         </Link>
                     </div>

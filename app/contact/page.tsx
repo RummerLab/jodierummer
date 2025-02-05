@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { FaTwitter, FaYoutube, FaInstagram, FaGlobe } from 'react-icons/fa'
+import { FaYoutube, FaInstagram, FaGlobe } from 'react-icons/fa'
 
 export const metadata = {
     title: "Contact - Dr. Jodie Rummer",
@@ -7,12 +7,6 @@ export const metadata = {
 }
 
 const socialLinks = [
-    {
-        name: 'Twitter',
-        href: 'https://twitter.com/jodie_rummer',
-        icon: FaTwitter,
-        description: 'Follow for research updates and science communication',
-    },
     {
         name: 'YouTube',
         href: 'https://www.youtube.com/@jodierummer',

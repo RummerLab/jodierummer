@@ -38,13 +38,6 @@ export const metadata: Metadata = {
       }
     ]
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Dr. Jodie Rummer | Marine Biologist & Researcher',
-    description: 'Dr. Jodie Rummer is a leading marine biologist specializing in fish physiology and adaptation to climate change.',
-    images: ['/twitter-image.jpg'],
-    creator: '@jodie_rummer'
-  },
   alternates: {
     canonical: 'https://jodierummer.com'
   }
@@ -68,7 +61,6 @@ export default function RootLayout({
             familyName: 'Rummer',
             url: 'https://jodierummer.com',
             sameAs: [
-              'https://twitter.com/jodie_rummer',
               'https://scholar.google.ca/citations?hl=en&authuser=1&user=ynWS968AAAAJ'
             ],
             jobTitle: 'Marine Biologist',
