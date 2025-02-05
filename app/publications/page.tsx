@@ -52,10 +52,10 @@ const publications: Publications = {
 }
 
 const categories = [
-  { name: 'Journal Articles', count: 107 },
-  { name: 'Book Chapters', count: 13 },
+  { name: 'Journal Articles', count: 133 },
+  { name: 'Book Chapters', count: 18 },
   { name: 'Conference Proceedings', count: 8 },
-  { name: 'Editorial Commentaries', count: 21 },
+  { name: 'Editorial Commentaries', count: 23 },
 ]
 
 export default function PublicationsPage() {
@@ -69,7 +69,7 @@ export default function PublicationsPage() {
               Publications
             </h1>
             <p className="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-300">
-              Dr. Rummer's research has been published in leading scientific journals, contributing to our understanding of marine biology, fish physiology, and climate change impacts.
+              Dr. Rummer's research has been published in leading scientific journals, contributing to our understanding of marine biology, fish physiology, and climate change impacts. Her work has received 5,735 citations with an h-index of 44 and an i10-index of 98 (Google Scholar, November 2024).
             </p>
           </div>
           <div className="mx-auto mt-16 max-w-2xl lg:mx-0">
