@@ -1,10 +1,9 @@
 import Link from 'next/link'
-import { FaTwitter, FaYoutube, FaGlobe, FaInstagram } from 'react-icons/fa'
+import { FaYoutube, FaGlobe, FaInstagram } from 'react-icons/fa'
 
 const socialLinks = [
   { name: 'Lab Website', href: 'https://rummerlab.com/', icon: FaGlobe },
   { name: 'PhysioShark', href: 'https://physioshark.org/', icon: FaGlobe },
-  { name: 'Twitter', href: 'https://twitter.com/jodie_rummer', icon: FaTwitter },
   { name: 'YouTube', href: 'https://www.youtube.com/@jodierummer', icon: FaYoutube },
   { name: 'Instagram', href: 'https://www.instagram.com/jodie.rummer/', icon: FaInstagram },
 ]
