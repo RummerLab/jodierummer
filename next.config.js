@@ -90,29 +90,29 @@ const nextConfig = {
         },
         {
             source: '/uploads/3/7/2/2/37225593/rummer__bennett_2005.pdf',
-            destination: '/',
-            permanent: true,
-        },
-        {
-            source: '/uploads/3/7/2/2/37225593/rummer_cv_oct._2014.pdf',
-            destination: '/',
+            destination: '/rummer__bennett_2005.pdf',
             permanent: true,
         },
         {
             source: '/uploads/3/7/2/2/37225593/press_and_media_coverage_4dec.2014.pdf',
-            destination: '/',
-            permanent: true,
-        },
-        {
-            source: '/uploads/3/7/2/2/37225593/rummer_cv_sept._2014.pdf',
-            destination: '/',
+            destination: '/press_and_media_coverage_4dec.2014.pdf',
             permanent: true,
         },
         {
             source: '/uploads/3/7/2/2/37225593/athena-2-infographic-cti_revised.pdf',
-            destination: '/',
+            destination: '/athena-2-infographic-cti_revised.pdf',
             permanent: true,
         },
+        /*{
+            source: '/uploads/3/7/2/2/37225593/rummer_cv_oct._2014.pdf',
+            destination: '/rummer_cv_oct._2014.pdf',
+            permanent: true,
+        },
+        {
+            source: '/uploads/3/7/2/2/37225593/rummer_cv_sept._2014.pdf',
+            destination: '/rummer_cv_sept._2014.pdf',
+            permanent: true,
+        },*/
     ],
 }
 
