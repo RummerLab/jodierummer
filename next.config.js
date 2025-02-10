@@ -12,6 +12,10 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
+                hostname: 'api.microlink.io',
+            },
+            {
+                protocol: 'https',
                 hostname: 'rummerlab.com',
                 pathname: '/images/**',
             },
@@ -19,6 +23,10 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'physiology.org',
                 pathname: '/images/**',
+            },
+            {
+                protocol: 'https',
+                hostname: '**.microlink.io',
             },
         ],
     },
@@ -114,6 +122,11 @@ const nextConfig = {
             permanent: true,
         },*/
     ],
+    experimental: {
+        serverActions: {
+            bodySizeLimit: '2mb',
+        },
+    },
 }
 
 module.exports = nextConfig
