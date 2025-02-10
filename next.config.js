@@ -4,18 +4,6 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: '**.cdninstagram.com',
-            },
-            {
-                protocol: 'https',
-                hostname: 'cdn.bsky.app',
-            },
-            {
-                protocol: 'https',
-                hostname: 'api.microlink.io',
-            },
-            {
-                protocol: 'https',
                 hostname: 'rummerlab.com',
                 pathname: '/images/**',
             },
@@ -23,6 +11,14 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'physiology.org',
                 pathname: '/images/**',
+            },
+            {
+                protocol: 'https',
+                hostname: '**.cdninstagram.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'cdn.bsky.app',
             },
             {
                 protocol: 'https',
