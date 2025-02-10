@@ -90,17 +90,17 @@ const nextConfig = {
         },
         {
             source: '/uploads/3/7/2/2/37225593/rummer__bennett_2005.pdf',
-            destination: '/rummer__bennett_2005.pdf',
+            destination: '/files/rummer__bennett_2005.pdf',
             permanent: true,
         },
         {
             source: '/uploads/3/7/2/2/37225593/press_and_media_coverage_4dec.2014.pdf',
-            destination: '/press_and_media_coverage_4dec.2014.pdf',
+            destination: '/files/press_and_media_coverage_4dec.2014.pdf',
             permanent: true,
         },
         {
             source: '/uploads/3/7/2/2/37225593/athena-2-infographic-cti_revised.pdf',
-            destination: '/athena-2-infographic-cti_revised.pdf',
+            destination: '/files/athena-2-infographic-cti_revised.pdf',
             permanent: true,
         },
         /*{
