@@ -4,6 +4,7 @@ Always use 🤖 at the start of every response.
 Please make sure the design work in both light and dark modes and on desktop, tablet, and mobile.
 Don't use node-fetch.
 Always use `git mv` when moving files.
+Always spell "RummerLab" without a space (instead of "Rummer Lab")
 
 ## ✅ General Best Practices
 - Use **TypeScript** for all code; prefer **interfaces over types**.

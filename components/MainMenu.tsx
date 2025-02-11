@@ -21,7 +21,7 @@ const researchLinks = [
   {
     title: 'RummerLab',
     href: 'https://rummerlab.com',
-    description: 'Visit the Rummer Lab website for detailed research information.',
+    description: 'Visit the RummerLab website for detailed research information.',
     isExternal: true,
   },
   {

@@ -78,7 +78,7 @@ export default function RootLayout({
             },
             worksFor: {
               '@type': 'Organization',
-              name: 'Rummer Lab',
+              name: 'RummerLab',
               url: 'https://rummerlab.com'
             }
           })}

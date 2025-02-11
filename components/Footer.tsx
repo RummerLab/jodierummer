@@ -10,7 +10,7 @@ const socialLinks = [
       <div className="relative w-5 h-5">
         <Image
           src="https://rummerlab.com/RummerLab_icon.svg"
-          alt="Rummer Lab Logo"
+          alt="RummerLab Logo"
           fill
           className="object-contain brightness-[1.5] grayscale hover:grayscale-0 hover:brightness-100 transition-all duration-200 text-slate-400"
           sizes="20px"
@@ -36,7 +36,7 @@ const socialLinks = [
     )
   },
   { name: 'YouTube', href: 'https://www.youtube.com/@jodierummer', icon: FaYoutube },
-  { name: 'Instagram', href: 'https://www.instagram.com/jodie.rummer/', icon: FaInstagram },
+  { name: 'Instagram', href: 'https://www.instagram.com/rummerjodie/', icon: FaInstagram },
 ]
 
 const footerLinks = [
