@@ -1,9 +1,40 @@
 import Link from 'next/link'
-import { FaYoutube, FaGlobe, FaInstagram } from 'react-icons/fa'
+import Image from 'next/image'
+import { FaYoutube, FaInstagram } from 'react-icons/fa'
 
 const socialLinks = [
-  { name: 'Lab Website', href: 'https://rummerlab.com/', icon: FaGlobe },
-  { name: 'PhysioShark', href: 'https://physioshark.org/', icon: FaGlobe },
+  {
+    name: 'Lab Website',
+    href: 'https://rummerlab.com/',
+    component: (
+      <div className="relative w-5 h-5">
+        <Image
+          src="https://rummerlab.com/RummerLab_icon.svg"
+          alt="Rummer Lab Logo"
+          fill
+          className="object-contain brightness-[1.5] grayscale hover:grayscale-0 hover:brightness-100 transition-all duration-200 text-slate-400"
+          sizes="20px"
+          unoptimized
+        />
+      </div>
+    )
+  },
+  {
+    name: 'PhysioShark',
+    href: 'https://physioshark.org/',
+    component: (
+      <div className="relative w-6 h-6">
+        <Image
+          src="https://physioshark.org/Physioshark_icon.svg"
+          alt="Physioshark Logo"
+          fill
+          className="object-contain brightness-[1.5] grayscale hover:grayscale-0 hover:brightness-100 transition-all duration-200 text-slate-400"
+          sizes="24px"
+          unoptimized
+        />
+      </div>
+    )
+  },
   { name: 'YouTube', href: 'https://www.youtube.com/@jodierummer', icon: FaYoutube },
   { name: 'Instagram', href: 'https://www.instagram.com/jodie.rummer/', icon: FaInstagram },
 ]
@@ -23,6 +54,21 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
         <div className="flex justify-center space-x-6 md:order-2">
           {socialLinks.map((item) => {
+            if (item.component) {
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-slate-400 hover:text-blue-500 transition-colors"
+                  target="_blank"
+                  rel="noopener"
+                  title={`Visit ${item.name}`}
+                  aria-label={item.name}
+                >
+                  {item.component}
+                </Link>
+              )
+            }
             const Icon = item.icon
             return (
               <Link
