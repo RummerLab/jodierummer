@@ -107,16 +107,16 @@ const nextConfig = {
             destination: '/files/athena-2-infographic-cti_revised.pdf',
             permanent: true,
         },
-        /*{
+        {
             source: '/uploads/3/7/2/2/37225593/rummer_cv_oct._2014.pdf',
-            destination: '/rummer_cv_oct._2014.pdf',
+            destination: '/about/cv',
             permanent: true,
         },
         {
             source: '/uploads/3/7/2/2/37225593/rummer_cv_sept._2014.pdf',
-            destination: '/rummer_cv_sept._2014.pdf',
+            destination: '/about/cv',
             permanent: true,
-        },*/
+        },
     ],
     experimental: {
         serverActions: {
