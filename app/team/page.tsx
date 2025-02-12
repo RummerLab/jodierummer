@@ -48,7 +48,7 @@ export const metadata: Metadata = {
 }
 
 async function getTeamMembers(): Promise<TeamMemberData[]> {
-  const res = await fetch('https://rummerlab.com/api/scholar/team', {
+  const res = await fetch('https://rummerlab.com/api/scholar/ynWS968AAAAJ/team', {
     cache: 'force-cache',
   })
 
