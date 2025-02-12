@@ -7,7 +7,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Script from 'next/script'
 import { GoogleAnalytics } from '@next/third-parties/google'
-import { MainNav } from './components/navigation/MainNav'
+import { MainNav } from '@/components/navigation/MainNav'
 
 const outfit = Outfit({ 
   subsets: ['latin'],
