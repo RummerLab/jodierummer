@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Script from 'next/script'
+import { YouTubeEmbed } from '@next/third-parties/google'
+import { Suspense } from 'react'
 
 export const metadata = {
     title: "Media",
@@ -29,6 +31,16 @@ const videos = [
         vimeoUrl: "https://vimeo.com/167221740",
     }
 ]
+
+function VideoSkeleton() {
+    return (
+        <div className="aspect-video bg-slate-200 dark:bg-slate-800 rounded-lg animate-pulse">
+            <div className="w-full h-full flex items-center justify-center">
+                <div className="text-slate-400 dark:text-slate-500">Loading video...</div>
+            </div>
+        </div>
+    )
+}
 
 export default function MediaPage() {
     return (
@@ -69,13 +81,14 @@ export default function MediaPage() {
                         {/* Video Embed */}
                         <div className="mb-8">
                             <div className="aspect-video relative w-full rounded-xl overflow-hidden">
-                                <iframe 
-                                    src="https://www.youtube.com/embed/-4EEP9CpI7s"
-                                    title="Athletes of the Great Barrier Reef - TEDx Talk by Dr. Jodie Rummer"
-                                    className="absolute inset-0 w-full h-full"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen
-                                />
+                                <Suspense fallback={<VideoSkeleton />}>
+                                    <YouTubeEmbed
+                                        videoid="-4EEP9CpI7s"
+                                        height={480}
+                                        params="rel=0"
+                                        playlabel="Play Athletes of the Great Barrier Reef - TEDx Talk by Dr. Jodie Rummer"
+                                    />
+                                </Suspense>
                             </div>
                         </div>
 

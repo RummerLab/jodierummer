@@ -1,5 +1,6 @@
-import { Metadata } from 'next'
-import { VideoPlayer } from '@/components/VideoPlayer'
+import { Metadata, ResolvingMetadata } from 'next'
+import { YouTubeEmbed } from '@next/third-parties/google'
+import { Suspense } from 'react'
 import Script from 'next/script'
 
 interface YouTubeOEmbed {
@@ -32,10 +33,9 @@ interface YouTubeVideoResponse {
   }>
 }
 
-interface Props {
-  params: {
-    videoId: string
-  }
+interface PageProps {
+  params: Promise<{ videoId: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
 async function getVideoData(videoId: string) {
@@ -100,27 +100,33 @@ async function getVideoData(videoId: string) {
 }
 
 export async function generateMetadata(
-  { params }: Props,
-  parent: Promise<Metadata>
+  { params, searchParams }: PageProps,
+  parent: ResolvingMetadata
 ): Promise<Metadata> {
-  // Wait for the parent metadata
-  const previousMetadata = await parent
-  
-  // Get video data
-  const video = await getVideoData(params.videoId)
+  const resolvedParams = await params
+  const resolvedSearchParams = await searchParams
+  const video = await getVideoData(resolvedParams.videoId)
   
   if (!video) {
     return {
-      ...previousMetadata,
+      metadataBase: new URL('https://jodierummer.com'),
       title: 'Video Not Found',
-      description: 'The requested video could not be found.'
+      description: 'The requested video could not be found.',
+      robots: {
+        index: false,
+        follow: true
+      }
     }
   }
 
   return {
-    ...previousMetadata,
+    metadataBase: new URL('https://jodierummer.com'),
     title: video.title,
     description: video.description,
+    robots: {
+      index: true,
+      follow: true
+    },
     openGraph: {
       title: video.title,
       description: video.description,
@@ -147,8 +153,20 @@ export async function generateMetadata(
   }
 }
 
-export default async function WatchPage({ params }: Props) {
-  const video = await getVideoData(params.videoId)
+function VideoSkeleton() {
+  return (
+    <div className="aspect-video bg-slate-200 dark:bg-slate-800 rounded-lg animate-pulse">
+      <div className="w-full h-full flex items-center justify-center">
+        <div className="text-slate-400 dark:text-slate-500">Loading video...</div>
+      </div>
+    </div>
+  )
+}
+
+export default async function WatchPage({ params, searchParams }: PageProps) {
+  const resolvedParams = await params
+  const resolvedSearchParams = await searchParams
+  const video = await getVideoData(resolvedParams.videoId)
 
   if (!video) {
     return (
@@ -173,19 +191,20 @@ export default async function WatchPage({ params }: Props) {
         </h1>
 
         <div className="aspect-video mb-8">
-          <VideoPlayer
-            thumbnail={video.thumbnail}
-            playlistUrl={video.url}
-            title={video.title}
-            aspectRatio={{ width: 16, height: 9 }}
-          />
+          <Suspense fallback={<VideoSkeleton />}>
+            <YouTubeEmbed
+              videoid={resolvedParams.videoId}
+              height={480}
+              params="rel=0"
+              playlabel={`Play ${video.title}`}
+            />
+          </Suspense>
         </div>
 
         <div className="prose dark:prose-invert max-w-none">
           <p>{video.description}</p>
         </div>
 
-        {/* VideoObject Schema */}
         <Script id="video-schema" type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
