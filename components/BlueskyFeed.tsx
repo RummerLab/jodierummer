@@ -97,6 +97,19 @@ export async function BlueskyFeed() {
             </div>
           </div>
         </div>
+        <div className="mt-4 text-sm">
+          <Link
+            href={blueskyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 transition inline-flex items-center gap-1"
+          >
+            View post on Bluesky
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </Link>
+        </div>
       </div>
     )
   }
@@ -112,18 +125,7 @@ export async function BlueskyFeed() {
             key={post.cid}
             className="p-6 bg-slate-50 dark:bg-slate-900 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition"
           >
-            {hasVideo ? (
-              renderPostContent(post, blueskyUrl)
-            ) : (
-              <Link
-                href={blueskyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-slate-900 dark:hover:text-white transition block"
-              >
-                {renderPostContent(post, blueskyUrl)}
-              </Link>
-            )}
+            {renderPostContent(post, blueskyUrl)}
           </article>
         )
       })}
