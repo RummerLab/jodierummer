@@ -65,16 +65,40 @@ export default function MediaPage() {
                         </div>
                     </div>
 
-                    <div className="bg-slate-100 dark:bg-slate-900 rounded-2xl overflow-hidden mb-8">
-                        <div className="aspect-video relative w-full max-w-4xl mx-auto">
-                            <iframe 
-                                src="https://www.youtube.com/embed/-4EEP9CpI7s"
-                                title="TEDx Talk: Athletes of the Great Barrier Reef by Dr. Jodie Rummer"
-                                className="absolute inset-0 w-full h-full"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                            />
+                    <div className="mt-16 sm:mt-20 lg:mt-24">
+                        {/* Video Embed */}
+                        <div className="mb-8">
+                            <div className="aspect-video relative w-full rounded-xl overflow-hidden">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/-4EEP9CpI7s"
+                                    title="Athletes of the Great Barrier Reef - TEDx Talk by Dr. Jodie Rummer"
+                                    className="absolute inset-0 w-full h-full"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                />
+                            </div>
                         </div>
+
+                        {/* Link to Watch Page */}
+                        <Link 
+                            href="/watch/-4EEP9CpI7s"
+                            className="inline-flex items-center text-blue-600 hover:text-blue-500 font-medium gap-2"
+                        >
+                            View full video page
+                            <svg 
+                                className="w-4 h-4" 
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                            >
+                                <path 
+                                    strokeLinecap="round" 
+                                    strokeLinejoin="round" 
+                                    strokeWidth={2} 
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" 
+                                />
+                            </svg>
+                        </Link>
                     </div>
 
                     <div className="max-w-3xl">
