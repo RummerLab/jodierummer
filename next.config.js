@@ -18,7 +18,7 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'cdn.bsky.app',
+                hostname: '**.bsky.app',
             },
             {
                 protocol: 'https',

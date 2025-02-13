@@ -26,6 +26,10 @@ interface BlueskyPost {
     did: string
   }
   originalUri?: string
+  aspectRatio?: {
+    width: number
+    height: number
+  }
   embed?: {
     images?: Array<{
       thumb: string
@@ -37,6 +41,11 @@ interface BlueskyPost {
       title: string
       description: string
       thumb?: string
+    }
+    video?: {
+      thumb?: string
+      uri: string
+      title?: string
     }
   }
   extractedUrl?: string
@@ -146,6 +155,7 @@ export const getBlueskyPosts = unstable_cache(
 
             // Handle external links in embeds
             let externalEmbed = undefined
+            let videoEmbed = undefined
             
             if (embed?.external) {
               // Skip if it's a Bluesky link
@@ -155,6 +165,35 @@ export const getBlueskyPosts = unstable_cache(
                   title: embed.external.title,
                   description: embed.external.description,
                   thumb: embed.external.thumb
+                }
+              }
+            } else if (embed?.$type === 'app.bsky.embed.video#view') {
+              // Handle direct video embeds
+              videoEmbed = {
+                thumb: embed.thumbnail,
+                uri: embed.playlist,
+                title: embed.alt || 'Video'
+              }
+            } else if (embed?.record?.$type === 'app.bsky.embed.record#view') {
+              // Handle video embeds from record views
+              const recordEmbed = embed.record.value as any
+
+              // Check for video in different embed structures
+              let foundVideo = recordEmbed?.embed?.video
+              
+              // Also check for video in embeds array
+              if (!foundVideo && recordEmbed?.embeds) {
+                const videoEmbed = recordEmbed.embeds.find((e: any) => e.$type?.includes('video'))
+                if (videoEmbed) {
+                  foundVideo = videoEmbed
+                }
+              }
+
+              if (foundVideo) {
+                videoEmbed = {
+                  thumb: foundVideo.thumb,
+                  uri: foundVideo.uri || foundVideo.url,
+                  title: recordEmbed.text || foundVideo.title || 'Video'
                 }
               }
             }
@@ -179,7 +218,10 @@ export const getBlueskyPosts = unstable_cache(
                 handle: postAuthor.handle,
                 did: postAuthor.did
               },
-              embed: embed?.images || externalEmbed ? {
+              ...(embed?.$type === 'app.bsky.embed.video#view' && {
+                aspectRatio: embed.aspectRatio
+              }),
+              embed: embed?.images || externalEmbed || videoEmbed ? {
                 ...(embed?.images && {
                   images: embed.images.map((img: any) => ({
                     thumb: img.thumb,
@@ -187,7 +229,8 @@ export const getBlueskyPosts = unstable_cache(
                     alt: img.alt || '',
                   }))
                 }),
-                ...(externalEmbed && { external: externalEmbed })
+                ...(externalEmbed && { external: externalEmbed }),
+                ...(videoEmbed && { video: videoEmbed })
               } : undefined,
               extractedUrl
             }
