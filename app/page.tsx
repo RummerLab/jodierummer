@@ -76,26 +76,15 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="mt-16 sm:mt-20 lg:mt-24">
-          <div className="relative aspect-video rounded-xl overflow-hidden">
-            <Suspense fallback={<VideoSkeleton />}>
-              <YouTubeEmbed
-                videoid="-4EEP9CpI7s"
-                height={480}
-                params="rel=0"
-                playlabel="Play Athletes of the Great Barrier Reef - TEDx Talk by Dr. Jodie Rummer"
-              />
-            </Suspense>
-          </div>
-          <div className="mt-4 text-center">
-            <Link 
-              href="/watch/-4EEP9CpI7s"
-              className="inline-flex items-center text-blue-600 hover:text-blue-500 font-medium gap-2"
-            >
-              View full video page
-              <FaArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+        <div className="mt-16 max-w-2xl mx-auto">
+          <Suspense fallback={<VideoSkeleton />}>
+            <YouTubeEmbed
+              videoid="-4EEP9CpI7s"
+              height={480}
+              params="rel=0&modestbranding=1"
+              playlabel="Play Athletes of the Great Barrier Reef - TEDx Talk by Dr. Jodie Rummer"
+            />
+          </Suspense>
         </div>
       </div>
 
