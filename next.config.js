@@ -24,6 +24,14 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: '**.microlink.io',
             },
+            {
+                protocol: 'https',
+                hostname: '**.youtube.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'i.ytimg.com',
+            },
         ],
     },
     redirects: async () => [

@@ -2,10 +2,22 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FaArrowRight } from 'react-icons/fa'
 import { BlueskyFeed } from '@/components/BlueskyFeed'
+import { YouTubeEmbed } from '@next/third-parties/google'
+import { Suspense } from 'react'
 
 export const metadata = {
   title: "Dr Jodie Rummer - Marine Biologist, TEDx Speaker, and Fish Friend",
   description: 'Dr. Jodie Rummer is a leading marine biologist specializing in fish physiology and adaptation to climate change.',
+}
+
+function VideoSkeleton() {
+  return (
+    <div className="aspect-video bg-slate-200 dark:bg-slate-800 rounded-lg animate-pulse">
+      <div className="w-full h-full flex items-center justify-center">
+        <div className="text-slate-400 dark:text-slate-500">Loading video...</div>
+      </div>
+    </div>
+  )
 }
 
 export default function Home() {
@@ -64,16 +76,15 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="mt-16 sm:mt-20 lg:mt-24">
-          <div className="relative aspect-video">
-            <iframe
-              src="https://www.youtube.com/embed/-4EEP9CpI7s"
-              title="Athletes of the Great Barrier Reef - TEDx Talk by Dr. Jodie Rummer"
-              className="absolute inset-0 w-full h-full rounded-xl"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
+        <div className="mt-16 max-w-2xl mx-auto">
+          <Suspense fallback={<VideoSkeleton />}>
+            <YouTubeEmbed
+              videoid="-4EEP9CpI7s"
+              height={480}
+              params="rel=0&modestbranding=1"
+              playlabel="Play Athletes of the Great Barrier Reef - TEDx Talk by Dr. Jodie Rummer"
+            />
+          </Suspense>
         </div>
       </div>
 
