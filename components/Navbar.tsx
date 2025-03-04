@@ -72,16 +72,9 @@ const publicationsLinks = [
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [expandedSection, setExpandedSection] = useState<string | null>(null)
-  const [researchOpen, setResearchOpen] = useState(false)
-  const [publicationsOpen, setPublicationsOpen] = useState(false)
 
-  const toggleSection = (section: string) => {
+  const toggleSubmenu = (section: string) => {
     setExpandedSection(expandedSection === section ? null : section)
-  }
-
-  const setIsOpen = (value: boolean) => {
-    setResearchOpen(value)
-    setPublicationsOpen(value)
   }
 
   return (
@@ -138,110 +131,147 @@ export default function Navbar() {
               </div>
 
               {/* Menu content */}
-              <div className="flex-1 px-6 py-8 bg-white dark:bg-slate-900">
+              <div className="flex-1 px-6 py-8 bg-white dark:bg-slate-900 overflow-y-auto">
                 <nav className="flex flex-col gap-y-6">
-                  {/* Main navigation */}
+                  {/* Main navigation with Research and Publications sections in correct order */}
                   <div className="space-y-2">
-                    {navigation.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        className="block rounded-lg px-4 py-3.5 text-lg font-medium text-slate-900 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800/80 dark:hover:text-white"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
+                    <Link
+                      href="/"
+                      className="block rounded-lg px-4 py-3.5 text-lg font-medium text-slate-900 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800/80 dark:hover:text-white"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Home
+                    </Link>
+                    
+                    <Link
+                      href="/about"
+                      className="block rounded-lg px-4 py-3.5 text-lg font-medium text-slate-900 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800/80 dark:hover:text-white"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      About
+                    </Link>
 
-                  {/* Research Section */}
-                  <div className="flex flex-col">
-                    <div className="flex items-center">
-                      <Link
-                        href="/research"
-                        onClick={() => setIsOpen(false)}
-                        className="flex-1 px-4 py-3 text-base font-semibold text-slate-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400"
-                      >
-                        Research
-                      </Link>
-                      <button
-                        onClick={() => setResearchOpen(!researchOpen)}
-                        className="px-4 py-3 text-slate-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 border-l border-slate-200 dark:border-slate-700"
-                      >
-                        <FaChevronDown
-                          className={`h-4 w-4 transition-transform duration-200 ${
-                            researchOpen ? "rotate-180" : ""
-                          }`}
-                        />
-                      </button>
-                    </div>
-                    {researchOpen && (
-                      <div className="pl-4 pb-2">
-                        {researchLinks.map((item) => (
-                          <Link
-                            key={item.title}
-                            href={item.href}
-                            onClick={() => setIsOpen(false)}
-                            target={item.isExternal ? "_blank" : undefined}
-                            rel={item.isExternal ? "noopener" : undefined}
-                            className="flex flex-col px-4 py-3 text-sm text-slate-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400"
-                          >
-                            <span className="font-semibold flex items-center gap-1">
-                              {item.title}
-                              {item.isExternal && <span className="text-sm">↗️</span>}
-                            </span>
-                            <span className="mt-1 text-sm text-slate-600 dark:text-slate-400">
-                              {item.description}
-                            </span>
-                          </Link>
-                        ))}
+                    {/* Research Section */}
+                    <div className="flex flex-col">
+                      <div className="flex items-center">
+                        <Link
+                          href="/research"
+                          onClick={() => {
+                            setExpandedSection(null)
+                            setMobileMenuOpen(false)
+                          }}
+                          className="flex-1 px-4 py-3 text-lg font-medium text-slate-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400"
+                        >
+                          Research
+                        </Link>
+                        <button
+                          onClick={() => toggleSubmenu('research')}
+                          className="px-4 py-3 text-slate-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 border-l border-slate-200 dark:border-slate-700"
+                          aria-expanded={expandedSection === 'research'}
+                        >
+                          <FaChevronDown
+                            className={`h-4 w-4 transition-transform duration-200 ${
+                              expandedSection === 'research' ? "rotate-180" : ""
+                            }`}
+                          />
+                        </button>
                       </div>
-                    )}
-                  </div>
+                      {expandedSection === 'research' && (
+                        <div className="pl-4 pb-2">
+                          {researchLinks.map((item) => (
+                            <Link
+                              key={item.title}
+                              href={item.href}
+                              onClick={() => setMobileMenuOpen(false)}
+                              target={item.isExternal ? "_blank" : undefined}
+                              rel={item.isExternal ? "noopener" : undefined}
+                              className="flex flex-col px-4 py-3 text-sm text-slate-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400"
+                            >
+                              <span className="font-semibold flex items-center gap-1">
+                                {item.title}
+                                {item.isExternal && <span className="text-sm">↗️</span>}
+                              </span>
+                              <span className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+                                {item.description}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
 
-                  {/* Publications Section */}
-                  <div className="flex flex-col">
-                    <div className="flex items-center">
-                      <Link
-                        href="/publications"
-                        onClick={() => setIsOpen(false)}
-                        className="flex-1 px-4 py-3 text-base font-semibold text-slate-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400"
-                      >
-                        Publications
-                      </Link>
-                      <button
-                        onClick={() => setPublicationsOpen(!publicationsOpen)}
-                        className="px-4 py-3 text-slate-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 border-l border-slate-200 dark:border-slate-700"
-                      >
-                        <FaChevronDown
-                          className={`h-4 w-4 transition-transform duration-200 ${
-                            publicationsOpen ? "rotate-180" : ""
-                          }`}
-                        />
-                      </button>
-                    </div>
-                    {publicationsOpen && (
-                      <div className="pl-4 pb-2">
-                        {publicationsLinks.map((item) => (
-                          <Link
-                            key={item.title}
-                            href={item.href}
-                            onClick={() => setIsOpen(false)}
-                            target={item.isExternal ? "_blank" : undefined}
-                            rel={item.isExternal ? "noopener" : undefined}
-                            className="flex flex-col px-4 py-3 text-sm text-slate-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400"
-                          >
-                            <span className="font-semibold flex items-center gap-1">
-                              {item.title}
-                              {item.isExternal && <span className="text-sm">↗️</span>}
-                            </span>
-                            <span className="mt-1 text-sm text-slate-600 dark:text-slate-400">
-                              {item.description}
-                            </span>
-                          </Link>
-                        ))}
+                    {/* Publications Section */}
+                    <div className="flex flex-col">
+                      <div className="flex items-center">
+                        <Link
+                          href="/publications"
+                          onClick={() => {
+                            setExpandedSection(null)
+                            setMobileMenuOpen(false)
+                          }}
+                          className="flex-1 px-4 py-3 text-lg font-medium text-slate-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400"
+                        >
+                          Publications
+                        </Link>
+                        <button
+                          onClick={() => toggleSubmenu('publications')}
+                          className="px-4 py-3 text-slate-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 border-l border-slate-200 dark:border-slate-700"
+                          aria-expanded={expandedSection === 'publications'}
+                        >
+                          <FaChevronDown
+                            className={`h-4 w-4 transition-transform duration-200 ${
+                              expandedSection === 'publications' ? "rotate-180" : ""
+                            }`}
+                          />
+                        </button>
                       </div>
-                    )}
+                      {expandedSection === 'publications' && (
+                        <div className="pl-4 pb-2">
+                          {publicationsLinks.map((item) => (
+                            <Link
+                              key={item.title}
+                              href={item.href}
+                              onClick={() => setMobileMenuOpen(false)}
+                              target={item.isExternal ? "_blank" : undefined}
+                              rel={item.isExternal ? "noopener" : undefined}
+                              className="flex flex-col px-4 py-3 text-sm text-slate-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400"
+                            >
+                              <span className="font-semibold flex items-center gap-1">
+                                {item.title}
+                                {item.isExternal && <span className="text-sm">↗️</span>}
+                              </span>
+                              <span className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+                                {item.description}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    <Link
+                      href="/media"
+                      className="block rounded-lg px-4 py-3.5 text-lg font-medium text-slate-900 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800/80 dark:hover:text-white"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Media
+                    </Link>
+                    
+                    <Link
+                      href="/women-in-science"
+                      className="block rounded-lg px-4 py-3.5 text-lg font-medium text-slate-900 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800/80 dark:hover:text-white"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Women in Science
+                    </Link>
+                    
+                    <Link
+                      href="/contact"
+                      className="block rounded-lg px-4 py-3.5 text-lg font-medium text-slate-900 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800/80 dark:hover:text-white"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Contact
+                    </Link>
                   </div>
                 </nav>
               </div>
