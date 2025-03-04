@@ -47,29 +47,79 @@ export const metadata: Metadata = {
   description: 'Meet the dedicated researchers and scientists behind the Physioshark Project.',
 }
 
-async function getTeamMembers(): Promise<TeamMemberData[]> {
-  const res = await fetch('https://rummerlab.com/api/scholar/ynWS968AAAAJ/team', {
-    cache: 'force-cache',
-  })
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch team data')
+// Fallback team data to use when API fetch fails
+const fallbackTeamData: TeamMemberData[] = [
+  {
+    name: 'Dr. Jodie Rummer',
+    title: 'Principal Investigator',
+    role: 'Marine Biologist',
+    email: 'jodie.rummer@jcu.edu.au',
+    description: 'Dr. Jodie Rummer is a marine biologist specializing in fish physiology and conservation in the face of climate change.',
+    image: '/images/team/dr-jodie-rummer.jpg',
+    alt: 'Dr. Jodie Rummer',
+    links: {
+      personalWebsite: 'jodierummer.com',
+      googleScholarId: 'ynWS968AAAAJ',
+    },
+    affiliations: [
+      {
+        institution: 'James Cook University',
+        department: 'College of Science and Engineering',
+        role: 'Professor',
+        location: 'Townsville, Australia'
+      }
+    ],
+    education: [
+      {
+        degree: 'Ph.D.',
+        field: 'Zoology',
+        institution: 'University of British Columbia',
+        year: '2010'
+      }
+    ],
+    awards: []
   }
+];
 
-  return res.json()
+async function getTeamMembers(): Promise<TeamMemberData[]> {
+  try {
+    const res = await fetch('https://rummerlab.com/api/scholar/ynWS968AAAAJ/team', {
+      cache: 'force-cache',
+      next: { revalidate: 3600 } // Revalidate every hour
+    })
+
+    if (!res.ok) {
+      console.error(`Failed to fetch team data: ${res.status} ${res.statusText}`);
+      return fallbackTeamData;
+    }
+
+    return res.json();
+  } catch (error) {
+    console.error('Error fetching team data:', error);
+    return fallbackTeamData;
+  }
 }
 
 export default async function TeamPage() {
-  const team = await getTeamMembers()
+  const team = await getTeamMembers();
 
   return (
     <main className="container mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold mb-8 text-center">Our Team</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {team.map((member: TeamMemberData) => (
-          <TeamMember key={member.name} member={member} />
-        ))}
-      </div>
+      
+      {team.length === 0 ? (
+        <div className="text-center py-12">
+          <p className="text-lg text-slate-600 dark:text-slate-400">
+            Team information is currently being updated. Please check back soon.
+          </p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {team.map((member: TeamMemberData) => (
+            <TeamMember key={member.name} member={member} />
+          ))}
+        </div>
+      )}
     </main>
   )
 } 
