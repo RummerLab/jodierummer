@@ -191,9 +191,18 @@ export default function MediaPage() {
                                 href="https://scholar.google.ca/citations?hl=en&authuser=1&user=ynWS968AAAAJ"
                                 target="_blank"
                                 rel="noopener"
-                                className="inline-flex items-center text-blue-600 hover:text-blue-500 font-medium gap-2"
+                                className="flex items-center text-blue-600 hover:text-blue-500 font-medium gap-2"
                             >
                                 View Google Scholar Profile
+                                <span>↗</span>
+                            </Link>
+                            <Link 
+                                href="/files/Dr_Jodie_Rummer_Interviews.pdf"
+                                target="_blank"
+                                rel="noopener"
+                                className="flex items-center text-blue-600 hover:text-blue-500 font-medium gap-2"
+                            >
+                                Download Interviews (PDF)
                                 <span>↗</span>
                             </Link>
                         </div>
