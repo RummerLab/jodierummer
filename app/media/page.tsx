@@ -197,7 +197,7 @@ export default function MediaPage() {
                                 <span>↗</span>
                             </Link>
                             <Link 
-                                href="/files/Dr_Jodie_Rummer_Interviews.pdf"
+                                href="/files/Dr_Jodie_Rummer_Interviews_2025.pdf"
                                 target="_blank"
                                 rel="noopener"
                                 className="flex items-center text-blue-600 hover:text-blue-500 font-medium gap-2"
