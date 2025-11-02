@@ -151,7 +151,7 @@ export default function CVPage() {
                             <div className="mt-6 space-y-4">
                                 <div className="flex gap-x-3">
                                     <span className="mt-1 h-5 w-5 flex-none text-blue-600">•</span>
-                                    <span>Dare to Lead, Dr. Brené Brown's certified leadership training (Lead with Courage, 2021)</span>
+                                    <span>Dare to Lead, Dr. Brené Brown&apos;s certified leadership training (Lead with Courage, 2021)</span>
                                 </div>
                                 <div className="flex gap-x-3">
                                     <span className="mt-1 h-5 w-5 flex-none text-blue-600">•</span>

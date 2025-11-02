@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import Script from 'next/script'
 import { YouTubeEmbed } from '@next/third-parties/google'
@@ -117,7 +116,7 @@ export default function MediaPage() {
                     <div className="max-w-3xl">
                         <div className="text-lg text-slate-700 dark:text-slate-300 space-y-4">
                             <p>
-                                Watch my talk "Athletes of the Great Barrier Reef" presented at TEDxJCUCairns. Check it out, and share it with your friends, family, and colleagues!
+                                Watch my talk &quot;Athletes of the Great Barrier Reef&quot; presented at TEDxJCUCairns. Check it out, and share it with your friends, family, and colleagues!
                             </p>
                             <p>
                                 There are some important issues in the tropics that need to be addressed globally! Spreading the word is the first step!

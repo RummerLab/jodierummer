@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import Script from 'next/script'
 
@@ -104,7 +103,7 @@ export default function WomenInSciencePage() {
                     </h2>
                     <div className="mt-6 space-y-6 text-lg leading-8 text-slate-600 dark:text-slate-300">
                         <p>
-                            Despite nearly equal representation at the university student level, the percentage of women in STEM fields starts to decline dramatically after post-doctoral positions. This 'leaky pipeline' syndrome stems from various factors, ranging from discrimination to resource allocation and differences in communication and mentoring styles.
+                            Despite nearly equal representation at the university student level, the percentage of women in STEM fields starts to decline dramatically after post-doctoral positions. This &apos;leaky pipeline&apos; syndrome stems from various factors, ranging from discrimination to resource allocation and differences in communication and mentoring styles.
                         </p>
                         <p>
                             Dr. Rummer is committed to addressing these challenges through active involvement in initiatives that support women and other underrepresented groups in science. Her work extends from mentoring individual students to advocating for institutional policy changes.
@@ -186,7 +185,7 @@ export default function WomenInSciencePage() {
                             Areas of Impact
                         </h2>
                         <p className="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-300">
-                            Key areas where we're making a difference in promoting diversity in science.
+                            Key areas where we&apos;re making a difference in promoting diversity in science.
                         </p>
                     </div>
                     <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">

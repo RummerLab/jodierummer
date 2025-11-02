@@ -16,7 +16,39 @@ export async function BlueskyFeed() {
     )
   }
 
-  const renderPostContent = (post: any, blueskyUrl: string) => {
+  interface Post {
+    text: string
+    repostText?: string
+    embed?: {
+      images?: Array<{
+        thumb: string
+        alt?: string
+      }>
+      video?: {
+        thumb?: string
+        uri: string
+        title?: string
+      }
+      external?: {
+        uri: string
+        title: string
+        description: string
+        thumb?: string
+      }
+    }
+    extractedUrl?: string
+    createdAt: string
+    replyCount: number
+    repostCount: number
+    likeCount: number
+    isRepost: boolean
+    aspectRatio?: {
+      width: number
+      height: number
+    }
+  }
+
+  const renderPostContent = (post: Post, blueskyUrl: string) => {
     const hasVideo = !!post.embed?.video
     const hasExtractedUrl = !!post.extractedUrl
 
@@ -39,7 +71,7 @@ export async function BlueskyFeed() {
         
         {post.embed?.images && (
           <div className={`grid ${post.embed.images.length > 1 ? 'grid-cols-2 gap-2' : 'grid-cols-1'}`}>
-            {post.embed.images.map((image: any, index: number) => (
+            {post.embed.images.map((image, index: number) => (
               <div 
                 key={index} 
                 className={`relative ${post.embed!.images!.length === 1 ? 'h-48' : 'aspect-square'}`}
@@ -56,7 +88,7 @@ export async function BlueskyFeed() {
           </div>
         )}
 
-        {hasVideo && (
+        {hasVideo && post.embed?.video && (
           <VideoPlayer
             thumbnail={post.embed.video.thumb || ''}
             playlistUrl={post.embed.video.uri}
@@ -118,7 +150,6 @@ export async function BlueskyFeed() {
     <div className="space-y-4">
       {posts.map((post) => {
         const blueskyUrl = `https://bsky.app/profile/${post.author.handle}/post/${post.uri?.split('/')?.pop() || ''}`
-        const hasVideo = !!post.embed?.video
         
         return (
           <article

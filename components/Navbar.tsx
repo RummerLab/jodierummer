@@ -7,13 +7,6 @@ import { FaChevronDown } from 'react-icons/fa'
 import ThemeToggle from './ThemeToggle'
 import MainMenu from './MainMenu'
 
-const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Media', href: '/media' },
-  { name: 'Women in Science', href: '/women-in-science' },
-  { name: 'Contact', href: '/contact' },
-]
 
 const researchLinks = [
   {

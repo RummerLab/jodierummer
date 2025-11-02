@@ -184,7 +184,7 @@ export default function ContactPage() {
                             Academic Profile
                         </h2>
                         <p className="mt-6 text-base text-slate-600 dark:text-slate-300">
-                            View Dr. Rummer's complete publication list and academic metrics on the following platforms:
+                            View Dr. Rummer&apos;s complete publication list and academic metrics on the following platforms:
                         </p>
                         <div className="mt-6 flex flex-col space-y-4">
                             <Link

@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata = {
@@ -24,7 +23,7 @@ export default function AboutPage() {
                         <figure className="border-l border-blue-600 pl-8">
                             <blockquote className="text-xl font-semibold leading-8 tracking-tight text-slate-900 dark:text-white">
                                 <p>
-                                    "Teaching about topics that I am passionate and enthusiastic about engages students and improves the overall learning process. Whether in the classroom, the laboratory, or the field, I believe it is important to teach students how to learn, not just what to learn and to remember that we are all still learning, regardless of where we are in our careers."
+                                    &quot;Teaching about topics that I am passionate and enthusiastic about engages students and improves the overall learning process. Whether in the classroom, the laboratory, or the field, I believe it is important to teach students how to learn, not just what to learn and to remember that we are all still learning, regardless of where we are in our careers.&quot;
                                 </p>
                             </blockquote>
                             <figcaption className="mt-8 flex gap-x-4">
@@ -55,7 +54,7 @@ export default function AboutPage() {
                     <div className="max-w-xl text-base leading-7 text-slate-700 dark:text-slate-300 lg:col-span-7">
                         <div className="space-y-6">
                             <p>
-                                Dr. Jodie Rummer is a Professor of Marine Biology at James Cook University (JCU). Her academic journey began in the United States with Bachelor's and Master's degrees from the University of West Florida, followed by a PhD from the University of British Columbia, and a post-doctoral fellowship in Hong Kong.
+                                Dr. Jodie Rummer is a Professor of Marine Biology at James Cook University (JCU). Her academic journey began in the United States with Bachelor&apos;s and Master&apos;s degrees from the University of West Florida, followed by a PhD from the University of British Columbia, and a post-doctoral fellowship in Hong Kong.
                             </p>
                             
                             <p>
@@ -71,15 +70,15 @@ export default function AboutPage() {
                             <ul className="mt-8 space-y-4 text-slate-600 dark:text-slate-300">
                                 <li className="flex gap-x-3">
                                     <span className="mt-1 h-5 w-5 flex-none text-blue-600">•</span>
-                                    <span>UNESCO-L'Oréal Women in Science Fellowship for Australia and New Zealand (2015-2016)</span>
+                                    <span>UNESCO-L&apos;Oréal Women in Science Fellowship for Australia and New Zealand (2015-2016)</span>
                                 </li>
                                 <li className="flex gap-x-3">
                                     <span className="mt-1 h-5 w-5 flex-none text-blue-600">•</span>
-                                    <span>Society for Experimental Biology's President's Medal (2016)</span>
+                                    <span>Society for Experimental Biology&apos;s President&apos;s Medal (2016)</span>
                                 </li>
                                 <li className="flex gap-x-3">
                                     <span className="mt-1 h-5 w-5 flex-none text-blue-600">•</span>
-                                    <span>Named one of Australia's top 5 scientists under 40 by ABC and Radio National (2016)</span>
+                                    <span>Named one of Australia&apos;s top 5 scientists under 40 by ABC and Radio National (2016)</span>
                                 </li>
                                 <li className="flex gap-x-3">
                                     <span className="mt-1 h-5 w-5 flex-none text-blue-600">•</span>
@@ -87,7 +86,7 @@ export default function AboutPage() {
                                 </li>
                                 <li className="flex gap-x-3">
                                     <span className="mt-1 h-5 w-5 flex-none text-blue-600">•</span>
-                                    <span>Queensland's Tall Poppy outstanding early career researcher, scientist of the year (2019)</span>
+                                    <span>Queensland&apos;s Tall Poppy outstanding early career researcher, scientist of the year (2019)</span>
                                 </li>
                             </ul>
 
@@ -97,7 +96,7 @@ export default function AboutPage() {
                             </p>
                             
                             <p>
-                                With over 150 peer-reviewed publications and presentations at more than 120 professional conferences worldwide, Dr. Rummer's research has made significant contributions to our understanding of marine ecosystems and climate change impacts.
+                                With over 150 peer-reviewed publications and presentations at more than 120 professional conferences worldwide, Dr. Rummer&apos;s research has made significant contributions to our understanding of marine ecosystems and climate change impacts.
                             </p>
 
                             <div className="mt-16">

@@ -21,19 +21,25 @@ export default function ThemeToggle() {
   useEffect(() => {
     // On mount, read the theme from localStorage or default to system
     const savedTheme = (localStorage.getItem('theme') as Theme) || 'system'
-    setTheme(savedTheme)
+    if (savedTheme !== theme) {
+      setTheme(savedTheme)
+    }
     updateThemeClass(savedTheme)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
+  useEffect(() => {
     // Add system theme change listener
+    if (theme !== 'system') return
+    
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
     const handleSystemThemeChange = () => {
-      if (theme === 'system') {
-        updateThemeClass('system')
-      }
+      updateThemeClass('system')
     }
 
     mediaQuery.addEventListener('change', handleSystemThemeChange)
     return () => mediaQuery.removeEventListener('change', handleSystemThemeChange)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme])
 
   const toggleTheme = () => {

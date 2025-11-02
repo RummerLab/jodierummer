@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import Script from 'next/script'
 
@@ -87,7 +86,7 @@ export default function ResearchPage() {
                                 Research Overview
                             </h1>
                             <p className="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-300">
-                                Dr. Rummer's research combines ecological and conservation physiology with an emphasis on issues affecting marine, estuarine, and freshwater fish populations. Her work focuses on understanding how fish respond to environmental change and the implications for conservation.
+                                Dr. Rummer&apos;s research combines ecological and conservation physiology with an emphasis on issues affecting marine, estuarine, and freshwater fish populations. Her work focuses on understanding how fish respond to environmental change and the implications for conservation.
                             </p>
                         </div>
                     </div>
@@ -142,7 +141,7 @@ export default function ResearchPage() {
                     <div className="mx-auto max-w-2xl lg:mx-0">
                         <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white mb-8">Major Research Grants</h2>
                         <p className="text-lg text-slate-600 dark:text-slate-300 mb-16">
-                            Dr. Rummer's research has been supported by prestigious grants and fellowships, enabling groundbreaking work in marine biology and conservation.
+                            Dr. Rummer&apos;s research has been supported by prestigious grants and fellowships, enabling groundbreaking work in marine biology and conservation.
                         </p>
                         <div className="grid gap-8 lg:grid-cols-2">
                             {majorGrants.map((grant) => (

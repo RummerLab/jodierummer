@@ -1,4 +1,4 @@
-import { Metadata, ResolvingMetadata } from 'next'
+import { Metadata } from 'next'
 import { YouTubeEmbed } from '@next/third-parties/google'
 import { Suspense } from 'react'
 import Script from 'next/script'
@@ -100,11 +100,9 @@ async function getVideoData(videoId: string) {
 }
 
 export async function generateMetadata(
-  { params, searchParams }: PageProps,
-  parent: ResolvingMetadata
+  { params }: PageProps,
 ): Promise<Metadata> {
   const resolvedParams = await params
-  const resolvedSearchParams = await searchParams
   const video = await getVideoData(resolvedParams.videoId)
   
   if (!video) {
@@ -163,9 +161,8 @@ function VideoSkeleton() {
   )
 }
 
-export default async function WatchPage({ params, searchParams }: PageProps) {
+export default async function WatchPage({ params }: PageProps) {
   const resolvedParams = await params
-  const resolvedSearchParams = await searchParams
   const video = await getVideoData(resolvedParams.videoId)
 
   if (!video) {

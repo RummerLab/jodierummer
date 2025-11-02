@@ -1,10 +1,10 @@
-import { AtpAgent, AppBskyFeedDefs, AppBskyActorDefs } from '@atproto/api'
+import { AtpAgent, AppBskyFeedDefs } from '@atproto/api'
 import { unstable_cache } from 'next/cache'
 
 // For authenticated requests, we use the PDS endpoint
 const agent = new AtpAgent({ 
   service: 'https://bsky.social',
-  persistSession: (evt, sess) => {
+  persistSession: () => {
     // Session is handled per request
     return Promise.resolve()
   }
@@ -51,7 +51,16 @@ interface BlueskyPost {
   extractedUrl?: string
 }
 
-function extractUrl(text: string, facets?: any[]): string | undefined {
+interface FacetFeature {
+  $type: string
+  uri?: string
+}
+
+interface Facet {
+  features?: FacetFeature[]
+}
+
+function extractUrl(text: string, facets?: Facet[]): string | undefined {
   // First try to get URL from facets if available
   if (facets?.length) {
     for (const facet of facets) {
@@ -61,7 +70,7 @@ function extractUrl(text: string, facets?: any[]): string | undefined {
           if (feature.$type === 'app.bsky.richtext.facet#mention') continue
           
           // Only process explicit links
-          if (feature.$type === 'app.bsky.richtext.facet#link') {
+          if (feature.$type === 'app.bsky.richtext.facet#link' && feature.uri) {
             // Skip Bluesky links
             if (feature.uri.includes('bsky.social') || feature.uri.includes('bsky.app')) continue
             return feature.uri
@@ -124,20 +133,65 @@ export const getBlueskyPosts = unstable_cache(
         limit: 20
       })
 
+interface PostRecord {
+  reply?: unknown
+  text?: string
+  facets?: Facet[]
+  record?: PostRecord
+  uri?: string
+  createdAt?: string
+}
+
+interface PostEmbed {
+  $type?: string
+  external?: {
+    uri: string
+    title: string
+    description: string
+    thumb?: string
+  }
+  video?: {
+    thumb?: string
+    playlist?: string
+    uri?: string
+    alt?: string
+  }
+  images?: Array<{
+    thumb: string
+    fullsize: string
+    alt: string
+  }>
+  thumbnail?: string
+  playlist?: string
+  alt?: string
+  aspectRatio?: {
+    width: number
+    height: number
+  }
+  record?: {
+    $type?: string
+    value?: PostRecord & {
+      embed?: PostEmbed
+      embeds?: PostEmbed[]
+      text?: string
+    }
+  }
+}
+
       return response.data.feed
         .filter((post: AppBskyFeedDefs.FeedViewPost) => {
           // Filter out replies (posts that have a 'reply' property)
-          const record = post.post.record as any
+          const record = post.post.record as PostRecord
           return !record.reply
         })
         .map((post: AppBskyFeedDefs.FeedViewPost) => {
-          const record = post.post.record as any
-          const embed = post.post.embed as any
+          const record = post.post.record as PostRecord
+          const embed = post.post.embed as PostEmbed | undefined
           const isRepost = post.reason?.$type === 'app.bsky.feed.defs#reasonRepost'
           
           try {
             // For reposts, get the original post data
-            const repostRecord = isRepost ? (record?.record as any) : null
+            const repostRecord = isRepost ? (record?.record as PostRecord) : null
             
             // Get the correct post data and author
             const postData = isRepost ? repostRecord : record
@@ -169,31 +223,39 @@ export const getBlueskyPosts = unstable_cache(
               }
             } else if (embed?.$type === 'app.bsky.embed.video#view') {
               // Handle direct video embeds
-              videoEmbed = {
-                thumb: embed.thumbnail,
-                uri: embed.playlist,
-                title: embed.alt || 'Video'
+              if (embed.playlist) {
+                videoEmbed = {
+                  thumb: embed.thumbnail,
+                  uri: embed.playlist,
+                  title: embed.alt || 'Video'
+                }
               }
             } else if (embed?.record?.$type === 'app.bsky.embed.record#view') {
               // Handle video embeds from record views
-              const recordEmbed = embed.record.value as any
+              const recordEmbed = embed.record.value as (PostRecord & {
+                embed?: PostEmbed
+                embeds?: PostEmbed[]
+              })
 
               // Check for video in different embed structures
               let foundVideo = recordEmbed?.embed?.video
               
               // Also check for video in embeds array
               if (!foundVideo && recordEmbed?.embeds) {
-                const videoEmbed = recordEmbed.embeds.find((e: any) => e.$type?.includes('video'))
-                if (videoEmbed) {
-                  foundVideo = videoEmbed
+                const videoEmbedObj = recordEmbed.embeds.find((e) => e.$type?.includes('video'))
+                if (videoEmbedObj?.video) {
+                  foundVideo = videoEmbedObj.video
                 }
               }
 
               if (foundVideo) {
-                videoEmbed = {
-                  thumb: foundVideo.thumb,
-                  uri: foundVideo.uri || foundVideo.url,
-                  title: recordEmbed.text || foundVideo.title || 'Video'
+                const videoUri = foundVideo.uri || foundVideo.playlist
+                if (videoUri) {
+                  videoEmbed = {
+                    thumb: foundVideo.thumb,
+                    uri: videoUri,
+                    title: recordEmbed.text || foundVideo.alt || 'Video'
+                  }
                 }
               }
             }
@@ -223,7 +285,7 @@ export const getBlueskyPosts = unstable_cache(
               }),
               embed: embed?.images || externalEmbed || videoEmbed ? {
                 ...(embed?.images && {
-                  images: embed.images.map((img: any) => ({
+                  images: embed.images.map((img) => ({
                     thumb: img.thumb,
                     fullsize: img.fullsize,
                     alt: img.alt || '',
