@@ -27,11 +27,11 @@ export function MainNav() {
     const [openDropdown, setOpenDropdown] = useState<string | null>(null)
 
     return (
-        <nav className="bg-white dark:bg-slate-900 shadow-sm fixed w-full z-50">
+        <nav className="bg-white dark:bg-slate-900 shadow-xs fixed w-full z-50">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 justify-between">
                     <div className="flex">
-                        <div className="flex flex-shrink-0 items-center">
+                        <div className="flex shrink-0 items-center">
                             <Link href="/" className="text-xl font-bold text-slate-900 dark:text-white">
                                 Dr. Jodie Rummer
                             </Link>
@@ -53,7 +53,7 @@ export function MainNav() {
                                         )}
                                     </Link>
                                     {item.dropdown && openDropdown === item.name && (
-                                        <div className="absolute left-0 mt-2 w-56 origin-top-left rounded-md bg-white dark:bg-slate-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
+                                        <div className="absolute left-0 mt-2 w-56 origin-top-left rounded-md bg-white dark:bg-slate-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-hidden z-10">
                                             <div className="py-1">
                                                 {item.dropdown.map((subItem) => (
                                                     <Link

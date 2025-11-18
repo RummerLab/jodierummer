@@ -100,7 +100,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col bg-white dark:bg-slate-950">
         <MainNav />
         <Navbar />
-        <main className="flex-grow pt-16">
+        <main className="grow pt-16">
           {children}
         </main>
         <Footer />

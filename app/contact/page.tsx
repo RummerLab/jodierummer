@@ -109,7 +109,7 @@ export default function ContactPage() {
                                 target="_blank"
                                 rel="noopener"
                             >
-                                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center">
+                                <div className="shrink-0 w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center">
                                     {item.component ? (
                                         item.component
                                     ) : (

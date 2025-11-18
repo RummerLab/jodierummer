@@ -89,11 +89,11 @@ export default function MainMenu() {
           <div className="flex">
             <Link
               href="/research"
-              className="group flex items-center gap-x-1 px-3 py-2 text-sm font-semibold text-slate-900 hover:text-blue-600 dark:text-slate-200 dark:hover:text-blue-400 transition-colors outline-none"
+              className="group flex items-center gap-x-1 px-3 py-2 text-sm font-semibold text-slate-900 hover:text-blue-600 dark:text-slate-200 dark:hover:text-blue-400 transition-colors outline-hidden"
             >
               Research
             </Link>
-            <NavigationMenu.Trigger className="group flex items-center px-2 py-2 text-sm font-semibold text-slate-900 hover:text-blue-600 dark:text-slate-200 dark:hover:text-blue-400 transition-colors outline-none border-l border-slate-200 dark:border-slate-700">
+            <NavigationMenu.Trigger className="group flex items-center px-2 py-2 text-sm font-semibold text-slate-900 hover:text-blue-600 dark:text-slate-200 dark:hover:text-blue-400 transition-colors outline-hidden border-l border-slate-200 dark:border-slate-700">
               <FaChevronDown
                 className="h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
                 aria-hidden="true"
@@ -129,11 +129,11 @@ export default function MainMenu() {
           <div className="flex">
             <Link
               href="/publications"
-              className="group flex items-center gap-x-1 px-3 py-2 text-sm font-semibold text-slate-900 hover:text-blue-600 dark:text-slate-200 dark:hover:text-blue-400 transition-colors outline-none"
+              className="group flex items-center gap-x-1 px-3 py-2 text-sm font-semibold text-slate-900 hover:text-blue-600 dark:text-slate-200 dark:hover:text-blue-400 transition-colors outline-hidden"
             >
               Publications
             </Link>
-            <NavigationMenu.Trigger className="group flex items-center px-2 py-2 text-sm font-semibold text-slate-900 hover:text-blue-600 dark:text-slate-200 dark:hover:text-blue-400 transition-colors outline-none border-l border-slate-200 dark:border-slate-700">
+            <NavigationMenu.Trigger className="group flex items-center px-2 py-2 text-sm font-semibold text-slate-900 hover:text-blue-600 dark:text-slate-200 dark:hover:text-blue-400 transition-colors outline-hidden border-l border-slate-200 dark:border-slate-700">
               <FaChevronDown
                 className="h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
                 aria-hidden="true"

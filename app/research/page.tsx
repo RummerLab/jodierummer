@@ -79,7 +79,7 @@ export default function ResearchPage() {
         <>
             <div className="bg-white dark:bg-slate-950">
                 {/* Hero section */}
-                <div className="relative isolate overflow-hidden bg-gradient-to-b from-blue-100/20 dark:from-blue-950/20">
+                <div className="relative isolate overflow-hidden bg-linear-to-b from-blue-100/20 dark:from-blue-950/20">
                     <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
                         <div className="mx-auto max-w-2xl lg:mx-0">
                             <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
@@ -145,7 +145,7 @@ export default function ResearchPage() {
                         </p>
                         <div className="grid gap-8 lg:grid-cols-2">
                             {majorGrants.map((grant) => (
-                                <div key={grant.title} className="relative flex items-center space-x-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 hover:border-slate-400 dark:hover:border-slate-600">
+                                <div key={grant.title} className="relative flex items-center space-x-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 hover:border-slate-400 dark:hover:border-slate-600">
                                     <div className="min-w-0 flex-1">
                                         <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
                                             {grant.title}
@@ -176,7 +176,7 @@ export default function ResearchPage() {
                             <div className="mt-10 flex items-center justify-center gap-x-6">
                                 <Link
                                     href="/publications"
-                                    className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                                    className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-blue-500 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                                 >
                                     View Publications
                                 </Link>

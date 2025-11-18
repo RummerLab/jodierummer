@@ -101,10 +101,10 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <>
           {/* Backdrop */}
-          <div className="fixed inset-0 bg-black/80 z-[100]" onClick={() => setMobileMenuOpen(false)} />
+          <div className="fixed inset-0 bg-black/80 z-100" onClick={() => setMobileMenuOpen(false)} />
           
           {/* Menu panel */}
-          <div className="fixed inset-0 z-[101] bg-white dark:bg-slate-900">
+          <div className="fixed inset-0 z-101 bg-white dark:bg-slate-900">
             <div className="flex h-full flex-col bg-white dark:bg-slate-900">
               {/* Header */}
               <div className="px-6 pt-6 pb-4 border-b border-slate-200 dark:border-slate-800">

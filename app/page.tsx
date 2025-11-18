@@ -26,7 +26,7 @@ export default function Home() {
       {/* Hero Section */}
       <div className="relative isolate overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-32 lg:flex lg:px-8 lg:py-40">
-          <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pt-8">
+          <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl lg:shrink-0 lg:pt-8">
             <h1 className="mt-10 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-6xl">
               Dr. Jodie Rummer
             </h1>
@@ -36,7 +36,7 @@ export default function Home() {
             <div className="mt-10 flex items-center gap-x-6">
               <Link
                 href="/about"
-                className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-blue-500 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
               >
                 About Me
               </Link>
@@ -93,8 +93,8 @@ export default function Home() {
         <div className="mx-auto max-w-2xl lg:max-w-none">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             <Link href="/research" className="group relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-slate-900 px-8 pb-8 pt-40">
-              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-slate-900 via-slate-900/40" />
-              <div className="absolute inset-0 -z-10 bg-gradient-to-b from-slate-900/30 via-slate-900/20" />
+              <div className="absolute inset-0 -z-10 bg-linear-to-t from-slate-900 via-slate-900/40" />
+              <div className="absolute inset-0 -z-10 bg-linear-to-b from-slate-900/30 via-slate-900/20" />
               <h3 className="mt-3 text-2xl font-semibold leading-6 text-white">
                 Research
                 <span className="inline-flex items-center ml-2 text-blue-400 group-hover:translate-x-1 transition-transform">
@@ -105,8 +105,8 @@ export default function Home() {
             </Link>
 
             <Link href="/publications" className="group relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-slate-900 px-8 pb-8 pt-40">
-              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-slate-900 via-slate-900/40" />
-              <div className="absolute inset-0 -z-10 bg-gradient-to-b from-slate-900/30 via-slate-900/20" />
+              <div className="absolute inset-0 -z-10 bg-linear-to-t from-slate-900 via-slate-900/40" />
+              <div className="absolute inset-0 -z-10 bg-linear-to-b from-slate-900/30 via-slate-900/20" />
               <h3 className="mt-3 text-2xl font-semibold leading-6 text-white">
                 Publications
                 <span className="inline-flex items-center ml-2 text-blue-400 group-hover:translate-x-1 transition-transform">
@@ -117,8 +117,8 @@ export default function Home() {
             </Link>
 
             <Link href="/women-in-science" className="group relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-slate-900 px-8 pb-8 pt-40">
-              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-slate-900 via-slate-900/40" />
-              <div className="absolute inset-0 -z-10 bg-gradient-to-b from-slate-900/30 via-slate-900/20" />
+              <div className="absolute inset-0 -z-10 bg-linear-to-t from-slate-900 via-slate-900/40" />
+              <div className="absolute inset-0 -z-10 bg-linear-to-b from-slate-900/30 via-slate-900/20" />
               <h3 className="mt-3 text-2xl font-semibold leading-6 text-white">
                 Women in Science
                 <span className="inline-flex items-center ml-2 text-blue-400 group-hover:translate-x-1 transition-transform">

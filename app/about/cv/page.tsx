@@ -28,14 +28,14 @@ export default function CVPage() {
                             <div className="mt-6 flex flex-col sm:flex-row gap-4">
                                 <Link 
                                     href="/files/rummer-cv-full-references-2024-11-15.pdf"
-                                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-slate-900"
+                                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-xs text-white bg-blue-600 hover:bg-blue-700 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-slate-900"
                                 >
                                     <FaDownload className="mr-2 -ml-1 h-4 w-4" />
                                     Download Full CV (PDF)
                                 </Link>
                                 <Link 
                                     href="/files/rummer-short-bio-2025-01-14.pdf"
-                                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:bg-blue-900 dark:text-blue-100 dark:hover:bg-blue-800 dark:focus:ring-offset-slate-900"
+                                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:bg-blue-900 dark:text-blue-100 dark:hover:bg-blue-800 dark:focus:ring-offset-slate-900"
                                 >
                                     <FaDownload className="mr-2 -ml-1 h-4 w-4" />
                                     Download Short Bio (PDF)
@@ -43,7 +43,7 @@ export default function CVPage() {
                             </div>
                         </div>
 
-                        <div className="relative w-40 h-40 flex-shrink-0 hidden sm:block">
+                        <div className="relative w-40 h-40 shrink-0 hidden sm:block">
                             <Image
                                 src="/jodie-rummer-logo.svg"
                                 alt="Dr. Jodie Rummer Logo"

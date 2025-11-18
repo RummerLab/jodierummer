@@ -61,7 +61,7 @@ export default function PublicationsPage() {
   return (
     <div className="bg-white dark:bg-slate-950">
       {/* Hero section */}
-      <div className="relative isolate overflow-hidden bg-gradient-to-b from-blue-100/20 dark:from-blue-950/20">
+      <div className="relative isolate overflow-hidden bg-linear-to-b from-blue-100/20 dark:from-blue-950/20">
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0">
             <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
