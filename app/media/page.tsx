@@ -173,6 +173,24 @@ export default function MediaPage() {
                                 />
                             </div>
                         </div>
+
+                        {/* Discover Wildlife */}
+                        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl p-6">
+                            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Discover Wildlife</h3>
+                            <p className="text-slate-600 dark:text-slate-400 mb-4">January 15, 2026</p>
+                            <p className="text-slate-700 dark:text-slate-300 mb-4">
+                                &quot;Walking sharks&quot; found off Australian coast. A closer look reveals extraordinary new discovery about epaulette shark reproduction.
+                            </p>
+                            <Link 
+                                href="https://www.discoverwildlife.com/animal-facts/marine-animals/epaulette-shark-reproduction"
+                                target="_blank"
+                                rel="noopener"
+                                className="inline-flex items-center text-blue-600 hover:text-blue-500 font-medium gap-2"
+                            >
+                                Read article on Discover Wildlife
+                                <span>↗</span>
+                            </Link>
+                        </div>
                         
                         <div className="text-center py-4">
                             <p className="text-slate-600 dark:text-slate-300 mb-4">
