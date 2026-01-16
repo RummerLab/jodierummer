@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import Script from 'next/script'
 import { YouTubeEmbed } from '@next/third-parties/google'
 import { Suspense } from 'react'
@@ -157,10 +158,25 @@ export default function MediaPage() {
                 {/* Media Coverage Section */}
                 <section aria-labelledby="media-coverage-title" className="mb-20">
                     <h2 id="media-coverage-title" className="text-3xl font-semibold text-slate-900 dark:text-white mb-6">Recent Media Coverage</h2>
-                    <div className="max-w-3xl">
-                        <div className="text-center py-12">
+                    <div className="max-w-3xl space-y-8">
+                        {/* Cairns Post */}
+                        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl p-6">
+                            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Cairns Post</h3>
+                            <p className="text-slate-600 dark:text-slate-400 mb-4">January 16, 2026</p>
+                            <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-800">
+                                <Image
+                                    src="/images/media/2026-01-16-Cairns-Post.jpg"
+                                    alt="Cairns Post article featuring Dr. Jodie Rummer"
+                                    fill
+                                    className="object-contain"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                />
+                            </div>
+                        </div>
+                        
+                        <div className="text-center py-4">
                             <p className="text-slate-600 dark:text-slate-300 mb-4">
-                                See media on <Link href="https://rummerlab.com/media" className="text-blue-600 hover:text-blue-500 font-medium">RummerLab</Link>.
+                                See more media on <Link href="https://rummerlab.com/media" className="text-blue-600 hover:text-blue-500 font-medium">RummerLab</Link>.
                             </p>
                         </div>
                     </div>
