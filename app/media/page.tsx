@@ -191,6 +191,42 @@ export default function MediaPage() {
                                 <span>↗</span>
                             </Link>
                         </div>
+
+                        {/* ABC News */}
+                        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl p-6">
+                            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">ABC News</h3>
+                            <p className="text-slate-600 dark:text-slate-400 mb-4">January 16, 2026</p>
+                            <div className="space-y-4">
+                                <div>
+                                    <p className="text-slate-700 dark:text-slate-300 mb-2">
+                                        Captive epaulette sharks lay eggs using no extra energy, JCU research finds
+                                    </p>
+                                    <Link 
+                                        href="https://www.abc.net.au/news/2026-01-16/captive-epaulette-sharks-make-lay-eggs-using-no-extra-energy-jcu/106231990"
+                                        target="_blank"
+                                        rel="noopener"
+                                        className="inline-flex items-center text-blue-600 hover:text-blue-500 font-medium gap-2"
+                                    >
+                                        Read article on ABC News
+                                        <span>↗</span>
+                                    </Link>
+                                </div>
+                                <div>
+                                    <p className="text-slate-700 dark:text-slate-300 mb-2">
+                                        Epaulette sharks are breaking the rules of biology
+                                    </p>
+                                    <Link 
+                                        href="https://www.abc.net.au/news/2026-01-16/epaulette-sharks-are-breaking-the-rules-of-biology/106229708"
+                                        target="_blank"
+                                        rel="noopener"
+                                        className="inline-flex items-center text-blue-600 hover:text-blue-500 font-medium gap-2"
+                                    >
+                                        Read article on ABC News
+                                        <span>↗</span>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
                         
                         <div className="text-center py-4">
                             <p className="text-slate-600 dark:text-slate-300 mb-4">
