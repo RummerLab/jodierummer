@@ -227,6 +227,24 @@ export default function MediaPage() {
                                 </div>
                             </div>
                         </div>
+
+                        {/* The Conversation */}
+                        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl p-6">
+                            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">The Conversation</h3>
+                            <p className="text-slate-600 dark:text-slate-400 mb-4">June 23, 2025</p>
+                            <p className="text-slate-700 dark:text-slate-300 mb-4">
+                                Sharks freeze when you turn them upside down – and there&apos;s no good reason why. Research explores tonic immobility in sharks, rays and their relatives.
+                            </p>
+                            <Link 
+                                href="https://theconversation.com/sharks-freeze-when-you-turn-them-upside-down-and-theres-no-good-reason-why-259448"
+                                target="_blank"
+                                rel="noopener"
+                                className="inline-flex items-center text-blue-600 hover:text-blue-500 font-medium gap-2"
+                            >
+                                Read article on The Conversation
+                                <span>↗</span>
+                            </Link>
+                        </div>
                         
                         <div className="text-center py-4">
                             <p className="text-slate-600 dark:text-slate-300 mb-4">
