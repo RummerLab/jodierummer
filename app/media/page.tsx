@@ -163,7 +163,7 @@ export default function MediaPage() {
                         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl p-6">
                             <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Cairns Post</h3>
                             <p className="text-slate-600 dark:text-slate-400 mb-4">January 16, 2026</p>
-                            <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-800">
+                            <div className="relative w-full aspect-4/3 rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-800">
                                 <Image
                                     src="/images/media/2026-01-16-Cairns-Post.jpg"
                                     alt="Cairns Post article featuring Dr. Jodie Rummer"
