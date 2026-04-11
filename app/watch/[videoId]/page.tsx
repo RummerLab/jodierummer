@@ -161,7 +161,8 @@ function VideoSkeleton() {
   )
 }
 
-export default async function WatchPage({ params }: PageProps) {
+export default async function WatchPage(props: PageProps) {
+  const params = await props.params;
   const resolvedParams = await params
   const video = await getVideoData(resolvedParams.videoId)
 
