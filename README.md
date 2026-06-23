@@ -88,10 +88,60 @@ jodierummer/
 
 ## 🔒 Security
 
-- Environment variables for sensitive data
-- Security headers configuration
-- XSS protection
-- CORS policies
+### Environment variables
+
+Sensitive credentials (Bluesky, YouTube API, Google Analytics) are stored in environment variables — see [`.env.template`](.env.template). Never commit `.env.local`.
+
+### HTTP security headers
+
+Headers are configured in [`next.config.js`](next.config.js) and applied to all routes via the `headers()` export.
+
+| Header | Value | Purpose |
+|--------|-------|---------|
+| `X-Frame-Options` | `DENY` | Blocks other sites from embedding pages in iframes (SEO-relevant) |
+| `Content-Security-Policy` | `frame-ancestors 'none'` | Modern equivalent of `X-Frame-Options` |
+| `X-Content-Type-Options` | `nosniff` | Prevents MIME-type sniffing |
+| `Referrer-Policy` | `strict-origin-when-cross-origin` | Limits referrer data sent to third parties |
+| `Permissions-Policy` | camera/mic/geo disabled | Restricts browser feature access |
+| `Content-Security-Policy-Report-Only` | Full policy (see config) | Monitors CSP violations without blocking; iterate before enforcing |
+
+**Enforced today:** framing, MIME sniffing, referrer, and permissions headers.
+
+**Report-only (monitoring):** a full CSP allowlisting Google Analytics, Vercel Analytics/Speed Insights, YouTube embeds, and external image CDNs. Check browser DevTools console for CSP violation reports after deploy, then tighten and switch to an enforcing `Content-Security-Policy` when clean.
+
+### HSTS (Cloudflare)
+
+`Strict-Transport-Security` is set at the Cloudflare layer (not in Next.js). Keep HSTS enabled in Cloudflare **SSL/TLS → Edge Certificates → HTTP Strict Transport Security**.
+
+### Cloudflare checklist
+
+Traffic flows **Browser → Cloudflare → Vercel**. After each deploy, confirm Cloudflare passes through (does not strip) headers from Vercel:
+
+1. **Transform Rules** — Ensure no rule removes or overrides `X-Frame-Options`, `Content-Security-Policy`, or related headers.
+2. **Optional belt-and-suspenders** — Duplicate core headers in a Cloudflare **Modify Response Header** rule if Vercel headers ever fail to reach the browser.
+3. **`Access-Control-Allow-Origin: *`** — This header is not required for a static marketing site with no public API. In Cloudflare, check **Rules → Transform Rules** and **Configuration Rules** for anything adding CORS headers; remove if unnecessary.
+
+### Verifying headers
+
+After deploy, confirm headers are present:
+
+```bash
+curl -I https://jodierummer.com
+```
+
+Or scan with [securityheaders.com](https://securityheaders.com/?q=jodierummer.com).
+
+Locally after `pnpm build && pnpm start`:
+
+```bash
+curl -I http://localhost:3000
+```
+
+### Other hardening
+
+- External links use `rel="noopener noreferrer"`
+- No public API routes; third-party fetches (Bluesky, microlink) run server-side only
+- Next.js `<Image>` uses an explicit hostname allowlist in `next.config.js`
 
 ## ♿ Accessibility
 

@@ -1,5 +1,42 @@
 /** @type {import('next').NextConfig} */
+
+const securityHeaders = [
+    { key: 'X-Frame-Options', value: 'DENY' },
+    { key: 'X-Content-Type-Options', value: 'nosniff' },
+    { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+    {
+        key: 'Permissions-Policy',
+        value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+    },
+    { key: 'X-DNS-Prefetch-Control', value: 'on' },
+    { key: 'Content-Security-Policy', value: "frame-ancestors 'none'" },
+    {
+        key: 'Content-Security-Policy-Report-Only',
+        value: [
+            "default-src 'self'",
+            "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com",
+            "style-src 'self' 'unsafe-inline'",
+            "img-src 'self' data: blob: https://rummerlab.com https://physiology.org https://*.cdninstagram.com https://*.bsky.app https://*.microlink.io https://*.youtube.com https://i.ytimg.com https://www.google-analytics.com",
+            "font-src 'self'",
+            "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://vitals.vercel-insights.com https://va.vercel-scripts.com",
+            "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com",
+            "frame-ancestors 'none'",
+            "object-src 'none'",
+            "base-uri 'self'",
+            "form-action 'self'",
+        ].join('; '),
+    },
+]
+
 const nextConfig = {
+    async headers() {
+        return [
+            {
+                source: '/:path*',
+                headers: securityHeaders,
+            },
+        ]
+    },
     images: {
         remotePatterns: [
             {
