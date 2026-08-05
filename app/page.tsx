@@ -5,10 +5,6 @@ import { BlueskyFeed } from '@/components/BlueskyFeed'
 import { YouTubeEmbed } from '@next/third-parties/google'
 import { Suspense } from 'react'
 
-// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
-// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
-export const instant = false;
-
 export const metadata = {
   title: "Dr Jodie Rummer - Marine Biologist, TEDx Speaker, and Fish Friend",
   description: 'Dr. Jodie Rummer is a leading marine biologist specializing in fish physiology and adaptation to climate change.',

@@ -1,10 +1,6 @@
 import { Metadata } from 'next'
 import { TeamMember } from '@/components/team/TeamMember'
 
-// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
-// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
-export const instant = false;
-
 interface TeamMemberData {
   name: string
   title: string | null
