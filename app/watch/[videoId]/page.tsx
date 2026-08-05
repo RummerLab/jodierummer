@@ -3,6 +3,10 @@ import { YouTubeEmbed } from '@next/third-parties/google'
 import { Suspense } from 'react'
 import Script from 'next/script'
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 interface YouTubeOEmbed {
   title: string
   author_name: string

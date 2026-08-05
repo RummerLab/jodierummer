@@ -2,6 +2,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { FaDownload } from 'react-icons/fa'
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 export const metadata = {
     title: "Dr. Jodie Rummer - Curriculum Vitae",
     description: "Detailed curriculum vitae of Dr. Jodie Rummer, including academic qualifications, employment history, awards, and professional activities.",

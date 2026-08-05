@@ -3,6 +3,10 @@ import Image from 'next/image'
 import { FaYoutube, FaInstagram, FaEnvelope, FaLinkedin } from 'react-icons/fa'
 import { SiBluesky, SiResearchgate, SiGooglescholar } from 'react-icons/si'
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 export const metadata = {
     title: "Contact - Dr. Jodie Rummer",
     description: "Get in touch with Dr. Jodie Rummer and connect through various platforms.",

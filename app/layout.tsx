@@ -9,6 +9,10 @@ import Script from 'next/script'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { MainNav } from '@/components/navigation/MainNav'
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 const outfit = Outfit({ 
   subsets: ['latin'],
   variable: '--font-outfit',

@@ -1,5 +1,9 @@
 import Link from 'next/link'
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 export const metadata = {
     title: "About Dr. Jodie Rummer",
     description: "Learn about Dr. Jodie Rummer's background, research interests, and contributions to marine biology and conservation science.",
