@@ -3,7 +3,6 @@ User-agent: *
 Allow: /
 Disallow: /404
 Disallow: /500
-Disallow: /_next
 Disallow: /api
 
 # Host

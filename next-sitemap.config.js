@@ -11,7 +11,7 @@ module.exports = {
             {
                 userAgent: '*',
                 allow: '/',
-                disallow: ['/404', '/500', '/_next', '/api'],
+                disallow: ['/404', '/500', '/api'],
             },
         ],
     },
