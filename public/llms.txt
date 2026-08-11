@@ -1,0 +1,20 @@
+# Dr. Jodie Rummer
+> Professor Jodie Rummer is a marine biologist and fish physiologist at James Cook University studying how fishes respond to climate change; she is also a TEDx speaker and advocate for women in science.
+
+Her research focuses on ecological, evolutionary, and conservation physiology in fishes, including how environmental and human-induced stress affect performance and adaptive capacity.
+
+## Pages
+- [Home](https://jodierummer.com/): Introduction, featured talk, and latest updates
+- [About](https://jodierummer.com/about): Biography and background
+- [Curriculum Vitae](https://jodierummer.com/about/cv): Academic CV and professional history
+- [Research](https://jodierummer.com/research): Research themes and projects on fish physiology and climate change
+- [Publications](https://jodierummer.com/publications): Published research and academic contributions
+- [Team](https://jodierummer.com/team): Research team and collaborators
+- [Media](https://jodierummer.com/media): Media coverage, talks, and public engagement
+- [Women in Science](https://jodierummer.com/women-in-science): Diversity initiatives and support for women in scientific research
+- [Contact](https://jodierummer.com/contact): Contact information
+
+## Optional
+- [RummerLab](https://rummerlab.com/): Research laboratory website
+- [Physioshark Project](https://physioshark.org/): Shark conservation physiology project in French Polynesia
+- [GitHub repository](https://github.com/RummerLab/jodierummer): Source code for this website
