@@ -115,7 +115,7 @@ function extractUrl(text: string, facets?: Facet[]): string | undefined {
 export const getBlueskyPosts = unstable_cache(
   async (): Promise<BlueskyPost[]> => {
     if (!process.env.BLUESKY_USERNAME || !process.env.BLUESKY_APP_PASSWORD) {
-      throw new Error('Bluesky credentials not configured')
+      return []
     }
 
     try {

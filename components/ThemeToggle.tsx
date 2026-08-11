@@ -22,6 +22,7 @@ export default function ThemeToggle() {
     // On mount, read the theme from localStorage or default to system
     const savedTheme = (localStorage.getItem('theme') as Theme) || 'system'
     if (savedTheme !== theme) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setTheme(savedTheme)
     }
     updateThemeClass(savedTheme)
