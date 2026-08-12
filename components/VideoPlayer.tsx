@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import Image from 'next/image'
 
 // Dynamically import ReactPlayer to avoid SSR issues
-const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false })
+const ReactPlayer = dynamic(() => import('react-player'), { ssr: false })
 
 interface VideoPlayerProps {
   thumbnail: string
@@ -86,24 +86,14 @@ export function VideoPlayer({ thumbnail, playlistUrl, title, aspectRatio }: Vide
       ) : (
         <div className="absolute inset-0">
           <ReactPlayer
-            url={playlistUrl}
+            src={playlistUrl}
             width="100%"
             height="100%"
             playing={isPlaying}
             controls
-            pip
-            stopOnUnmount
-            onPlay={handlePlay}
+            pip            onPlay={handlePlay}
             onPause={handlePause}
             onEnded={handleEnded}
-            config={{
-              file: {
-                forceHLS: true,
-                attributes: {
-                  poster: thumbnail
-                }
-              }
-            }}
           />
         </div>
       )}
