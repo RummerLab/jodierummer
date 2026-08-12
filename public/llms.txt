@@ -16,5 +16,5 @@ Her research focuses on ecological, evolutionary, and conservation physiology in
 
 ## Optional
 - [RummerLab](https://rummerlab.com/): Research laboratory website
-- [Physioshark Project](https://physioshark.org/): Shark conservation physiology project in French Polynesia
+- [Physioshark Project](https://physioshark.org/): Shark conservation physiology project on Mo'orea, French Polynesia, in collaboration with science4reefs
 - [GitHub repository](https://github.com/RummerLab/jodierummer): Source code for this website
