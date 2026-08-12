@@ -1,69 +1,60 @@
 # AGENTS.md
 
-Instructions for coding agents working on Dr Jodie Rummer's site (`https://jodierummer.com`).
+Agent instructions for Dr Jodie Rummer's site (`https://jodierummer.com`).
 
 Always start every response with 🤖.
 
-This is a Next.js 16 (App Router) + React 19 TypeScript site. Designs must work in light and dark modes and on desktop, tablet, and mobile.
-
-- Do not use `node-fetch`. Use the Next.js `fetch` API.
-- Always use `git mv` when moving files.
-- Always spell **RummerLab** without a space (not "Rummer Lab").
+Stack: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, Radix UI. Config is `next.config.js`.
 
 ## Project overview
 
-Personal site for Professor Jodie Rummer (James Cook University): research, publications, CV, media, women in science, and team.
+Personal site for Professor Jodie Rummer at James Cook University: about/CV, research, publications, media, women in science, and team.
 
-Related sites: [rummerlab.com](https://rummerlab.com), [physioshark.org](https://physioshark.org).
+Sister sites: [rummerlab.com](https://rummerlab.com), [physioshark.org](https://physioshark.org). Spell **RummerLab** with no space.
 
-## Setup commands
+Physioshark fieldwork is on Mo'orea, French Polynesia, with [science4reefs](https://www.science4reefs-cnrs.com/). Do not describe current fieldwork as based at CRIOBE.
+
+## Setup
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Testing instructions
+## Checks
 
-Run these after any code changes, and fix failures before finishing:
+After code changes, run and fix:
 
 ```bash
 npm run lint
 npm run build
 ```
 
-## Code style
+If you suspect a security issue, run `snyk test`.
 
-- Use TypeScript for all code; prefer interfaces over types.
-- Minimize `'use client'`; favor React Server Components.
-- Use early returns and follow DRY.
-- Directories: kebab-case (`components/research-section`).
-- React components: PascalCase (`HeroSection.tsx`).
-- Favor named exports for components and utilities.
+## Conventions
 
-## Next.js and React
+- TypeScript everywhere. Prefer interfaces over types. Named exports.
+- Directories: kebab-case. Components: PascalCase.
+- Favor React Server Components. Add `'use client'` only when needed.
+- Await `params` and `searchParams`. Use the platform `fetch` API (not `node-fetch`).
+- Early returns, DRY, `handle` prefix on event handlers (`handleClick`).
+- Style with Tailwind. UI must work in light and dark modes, and on desktop, tablet, and mobile.
+- Use Radix primitives already in the project for accessible interactive UI.
+- Use `git mv` when moving files.
+- Complete the change: no TODOs or placeholders.
 
-- Use `cache: 'force-cache'` or `'no-store'` explicitly on fetch requests.
-- Use SEO-optimized metadata (`generateMetadata` in layouts/pages).
-- Preload important resources (hero images, fonts).
-- Use `Suspense` for async work and lazy loading.
-- Favor `useOptimistic` and `useFormStatus` for mutations and forms.
-- Minimize client-side state; prefer URL state (`nuqs`) when needed.
-- Do not use `getStaticProps` (Pages Router). This project uses the App Router.
+## Images
 
-## UI, a11y, and performance
+Use `next/image`. Prefer WebP via the optimizer.
 
-- Tailwind, mobile-first. Use Shadcn UI and Radix for accessible components.
-- Interactive elements must be keyboard-accessible.
-- Prioritize readability: large text, spacing, high contrast.
-- Semantic HTML, WCAG 2.1 contrast, correct ARIA on custom components.
-- Optimize images with Next.js `<Image>` (prefer WebP). Lazy-load non-critical UI. Dynamic-import heavy components.
-- Prefer built-in Next.js features over new third-party dependencies.
-- Use `next/font` to reduce layout shift.
+- `priority` only for above-the-fold images (hero, first 1–2 key photos).
+- Prefer `fill` with a constrained `sizes` over large fixed dimensions.
+- `quality={85}` unless there is a strong reason for higher.
+- Do not add `deviceSizes` / `imageSizes` in `next.config.js` without need.
 
 ## Security
 
-- Sanitize user inputs to prevent XSS.
-- Use error boundaries for UI failures.
-- Store secrets in environment variables; never commit them.
-- Security headers are configured in `next.config.js`.
+- Never commit secrets or `.env*` files.
+- Sanitize user input.
+- Security headers are set in `next.config.js`.
