@@ -4,6 +4,8 @@ Agent instructions for Dr Jodie Rummer's site (`https://jodierummer.com`).
 
 Always start every response with 🤖.
 
+Treat this file as living documentation: update `AGENTS.md` when the stack, scripts, conventions, or project facts change so it stays accurate.
+
 Stack: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, Radix UI. Config is `next.config.js`.
 
 ## Project overview
