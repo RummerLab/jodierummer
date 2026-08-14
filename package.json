@@ -43,7 +43,7 @@
     "next-sitemap": "^4.2.3",
     "postcss": "^8.5.26",
     "tailwindcss": "^4.3.3",
-    "typescript": "^5"
+    "typescript": "^7"
   },
   "overrides": {
     "@types/react": "19.2.18",
