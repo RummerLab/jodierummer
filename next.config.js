@@ -18,7 +18,7 @@ const securityHeaders = [
             "style-src 'self' 'unsafe-inline'",
             "img-src 'self' data: blob: https://rummerlab.com https://physiology.org https://*.cdninstagram.com https://*.bsky.app https://*.microlink.io https://*.youtube.com https://i.ytimg.com https://www.google-analytics.com",
             "font-src 'self'",
-            "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://vitals.vercel-insights.com https://va.vercel-scripts.com",
+            "connect-src 'self' https://rummerlab.com https://www.google-analytics.com https://*.google-analytics.com https://vitals.vercel-insights.com https://va.vercel-scripts.com",
             "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com",
             "frame-ancestors 'none'",
             "object-src 'none'",

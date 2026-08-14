@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Script from 'next/script'
+import { findRummerlabPaper, getRummerlabFeaturedPapers } from '@/lib/rummerlab-papers'
 
 export const metadata = {
     title: "Women in Science - Dr. Jodie Rummer",
@@ -78,7 +79,9 @@ const impactAreas = [
     }
 ]
 
-export default function WomenInSciencePage() {
+export default async function WomenInSciencePage() {
+    const featuredPapers = await getRummerlabFeaturedPapers();
+    const genderEquityPaper = findRummerlabPaper(featuredPapers, 'spaet');
     return (
         <div className="bg-white dark:bg-slate-950">
             {/* Hero section */}
@@ -112,6 +115,48 @@ export default function WomenInSciencePage() {
                             As an LGBTQIA+ scientist, Dr. Rummer is also dedicated to creating an inclusive environment where brilliant LGBTQIA+ minds are not lost from STEM. This includes maintaining open dialogue about LGBTQIA+ experiences in science, providing safe spaces for discussion, and advocating for policy changes that support LGBTQIA+ scientists.
                         </p>
                     </div>
+
+                    {genderEquityPaper ? (
+                        <article className="mt-12 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-8">
+                            <p className="text-sm font-semibold leading-7 text-blue-600 dark:text-blue-400">
+                                Latest research
+                            </p>
+                            {genderEquityPaper.year ? (
+                                <time
+                                    dateTime={String(genderEquityPaper.year)}
+                                    className="mt-2 block text-sm text-slate-500 dark:text-slate-400"
+                                >
+                                    {genderEquityPaper.year}
+                                </time>
+                            ) : null}
+                            <h3 className="mt-2 text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+                                <Link
+                                    href={genderEquityPaper.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-blue-600 dark:hover:text-blue-400"
+                                >
+                                    {genderEquityPaper.name}
+                                </Link>
+                            </h3>
+                            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+                                <Link
+                                    href={genderEquityPaper.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-blue-500 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                                >
+                                    Read the paper
+                                </Link>
+                                <Link
+                                    href="/publications#featured"
+                                    className="text-sm font-semibold leading-6 text-slate-900 dark:text-white"
+                                >
+                                    Featured publications <span aria-hidden="true">→</span>
+                                </Link>
+                            </div>
+                        </article>
+                    ) : null}
                 </div>
             </div>
 
@@ -248,6 +293,18 @@ export default function WomenInSciencePage() {
                         '@type': 'Person',
                         '@id': 'https://jodierummer.com/#person'
                     },
+                    ...(genderEquityPaper
+                        ? {
+                              subjectOf: {
+                                  '@type': 'ScholarlyArticle',
+                                  name: genderEquityPaper.name,
+                                  url: genderEquityPaper.url,
+                                  ...(genderEquityPaper.year
+                                      ? { datePublished: String(genderEquityPaper.year) }
+                                      : {}),
+                              },
+                          }
+                        : {}),
                     award: achievements.map(achievement => ({
                         '@type': 'Award',
                         name: achievement.title,

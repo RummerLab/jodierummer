@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Script from 'next/script'
+import { getRummerlabFeaturedPapers } from '@/lib/rummerlab-papers'
 
 interface JournalArticle {
     id: string
@@ -44,7 +45,6 @@ export const metadata = {
   }
 }
 
-// This will be replaced with actual API data
 const publications: Publications = {
   journalArticles: [],
   bookChapters: []
@@ -57,7 +57,8 @@ const categories = [
   { name: 'Editorial Commentaries', count: 23 },
 ]
 
-export default function PublicationsPage() {
+export default async function PublicationsPage() {
+  const featuredPapers = await getRummerlabFeaturedPapers();
   return (
     <div className="bg-white dark:bg-slate-950">
       {/* Hero section */}
@@ -86,8 +87,58 @@ export default function PublicationsPage() {
         </div>
       </div>
 
+      {/* Featured Publications */}
+      <div id="featured" className="mx-auto max-w-7xl px-6 lg:px-8 py-24 scroll-mt-24">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white mb-8">
+            Featured Publications
+          </h2>
+          {featuredPapers.length > 0 ? (
+            <div className="space-y-6">
+              {featuredPapers.map((paper) => (
+                <article key={paper.filename} className="relative isolate">
+                  <div className="flex items-center gap-x-4 text-xs">
+                    {paper.year ? (
+                      <time dateTime={String(paper.year)} className="text-slate-500 dark:text-slate-400">
+                        {paper.year}
+                      </time>
+                    ) : null}
+                  </div>
+                  <h3 className="mt-3 text-lg font-semibold leading-6 text-slate-900 dark:text-white">
+                    <a href={paper.url} target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 dark:hover:text-blue-400">
+                      {paper.name}
+                    </a>
+                  </h3>
+                  <p className="mt-4 text-sm">
+                    <a
+                      href={paper.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
+                    >
+                      PDF
+                    </a>
+                  </p>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <Link
+                href="https://rummerlab.com/publications"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-4 text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
+              >
+                View papers on RummerLab →
+              </Link>
+            </div>
+          )}
+        </div>
+      </div>
+
       {/* Journal Articles section */}
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24">
+      <div id="articles" className="mx-auto max-w-7xl px-6 lg:px-8 py-24 scroll-mt-24">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white mb-8">
             Journal Articles
@@ -145,7 +196,7 @@ export default function PublicationsPage() {
       </div>
 
       {/* Book Chapters section */}
-      <div className="bg-slate-50 dark:bg-slate-900">
+      <div id="books" className="bg-slate-50 dark:bg-slate-900 scroll-mt-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24">
           <div className="mx-auto max-w-3xl">
             <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white mb-8">
@@ -219,6 +270,12 @@ export default function PublicationsPage() {
             '@id': 'https://jodierummer.com/#person'
           },
           hasPart: [
+            ...featuredPapers.map(paper => ({
+              '@type': 'ScholarlyArticle',
+              headline: paper.name,
+              datePublished: paper.year ?? undefined,
+              url: paper.url
+            })),
             ...publications.journalArticles.map(article => ({
               '@type': 'ScholarlyArticle',
               headline: article.title,
