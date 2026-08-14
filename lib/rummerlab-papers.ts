@@ -47,7 +47,15 @@ export const getRummerlabPapers = async (): Promise<RummerlabPaper[]> => {
 export const getRummerlabFeaturedPapers = async (
   limit = DEFAULT_FEATURED_LIMIT,
 ): Promise<RummerlabPaper[]> => {
-  return asPapers(
-    await fetchPapersJson(`/api/papers/featured?limit=${encodeURIComponent(String(limit))}`),
-  );
+  const papers = await getRummerlabPapers();
+  const parsedLimit = Number.isFinite(limit) ? Math.max(0, Math.floor(limit)) : DEFAULT_FEATURED_LIMIT;
+  return papers.slice(0, parsedLimit);
+};
+
+export const findRummerlabPaper = (
+  papers: RummerlabPaper[],
+  filenameIncludes: string,
+): RummerlabPaper | undefined => {
+  const needle = filenameIncludes.toLowerCase();
+  return papers.find((paper) => paper.filename.toLowerCase().includes(needle));
 };

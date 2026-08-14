@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Script from 'next/script'
-import { getRummerlabPapers } from '@/lib/rummerlab-papers'
+import { findRummerlabPaper, getRummerlabFeaturedPapers } from '@/lib/rummerlab-papers'
 
 export const metadata = {
     title: "Women in Science - Dr. Jodie Rummer",
@@ -80,8 +80,8 @@ const impactAreas = [
 ]
 
 export default async function WomenInSciencePage() {
-    const papers = await getRummerlabPapers();
-    const spaetPaper = papers.find((paper) => paper.filename.toLowerCase().includes('spaet'));
+    const featuredPapers = await getRummerlabFeaturedPapers();
+    const genderEquityPaper = findRummerlabPaper(featuredPapers, 'spaet');
     return (
         <div className="bg-white dark:bg-slate-950">
             {/* Hero section */}
@@ -116,46 +116,47 @@ export default async function WomenInSciencePage() {
                         </p>
                     </div>
 
-                    <article className="mt-12 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-8">
-                        <p className="text-sm font-semibold leading-7 text-blue-600 dark:text-blue-400">
-                            Latest research
-                        </p>
-                        <h3 className="mt-2 text-xl font-bold tracking-tight text-slate-900 dark:text-white">
-                            Inclusive Science for a changing ocean: gender equity in elasmobranch research
-                        </h3>
-                        <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
-                            Spaet, Mourier, and Rummer (2026). <em>Frontiers in Fish Science</em> 4:1816786.
-                        </p>
-                        <p className="mt-4 text-sm leading-6 text-slate-600 dark:text-slate-300">
-                            A Perspective with Julia L.Y. Spaet and Johann Mourier evaluating gender representation across more than twelve thousand elasmobranch papers. Participation by women has increased, especially in early-career and lead-author roles, but progression into senior authorship remains uneven. The authors argue that diverse leadership is essential to the intellectual robustness of shark and ray science.
-                        </p>
-                        <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
-                            <Link
-                                href="https://doi.org/10.3389/frish.2026.1816786"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-blue-500 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-                            >
-                                Read the paper
-                            </Link>
-                            {spaetPaper ? (
+                    {genderEquityPaper ? (
+                        <article className="mt-12 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-8">
+                            <p className="text-sm font-semibold leading-7 text-blue-600 dark:text-blue-400">
+                                Latest research
+                            </p>
+                            {genderEquityPaper.year ? (
+                                <time
+                                    dateTime={String(genderEquityPaper.year)}
+                                    className="mt-2 block text-sm text-slate-500 dark:text-slate-400"
+                                >
+                                    {genderEquityPaper.year}
+                                </time>
+                            ) : null}
+                            <h3 className="mt-2 text-xl font-bold tracking-tight text-slate-900 dark:text-white">
                                 <Link
-                                    href={spaetPaper.url}
+                                    href={genderEquityPaper.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    className="hover:text-blue-600 dark:hover:text-blue-400"
+                                >
+                                    {genderEquityPaper.name}
+                                </Link>
+                            </h3>
+                            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+                                <Link
+                                    href={genderEquityPaper.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-blue-500 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                                >
+                                    Read the paper
+                                </Link>
+                                <Link
+                                    href="/publications#featured"
                                     className="text-sm font-semibold leading-6 text-slate-900 dark:text-white"
                                 >
-                                    PDF <span aria-hidden="true">→</span>
+                                    Featured publications <span aria-hidden="true">→</span>
                                 </Link>
-                            ) : null}
-                            <Link
-                                href="/publications#featured"
-                                className="text-sm font-semibold leading-6 text-slate-900 dark:text-white"
-                            >
-                                Featured publications <span aria-hidden="true">→</span>
-                            </Link>
-                        </div>
-                    </article>
+                            </div>
+                        </article>
+                    ) : null}
                 </div>
             </div>
 
@@ -292,21 +293,18 @@ export default async function WomenInSciencePage() {
                         '@type': 'Person',
                         '@id': 'https://jodierummer.com/#person'
                     },
-                    subjectOf: {
-                        '@type': 'ScholarlyArticle',
-                        name: 'Inclusive Science for a changing ocean: gender equity in elasmobranch research',
-                        author: [
-                            { '@type': 'Person', name: 'Julia L.Y. Spaet' },
-                            { '@type': 'Person', name: 'Johann Mourier' },
-                            { '@type': 'Person', name: 'Jodie L. Rummer', '@id': 'https://jodierummer.com/#person' }
-                        ],
-                        datePublished: '2026-08-14',
-                        publisher: {
-                            '@type': 'Periodical',
-                            name: 'Frontiers in Fish Science'
-                        },
-                        sameAs: 'https://doi.org/10.3389/frish.2026.1816786'
-                    },
+                    ...(genderEquityPaper
+                        ? {
+                              subjectOf: {
+                                  '@type': 'ScholarlyArticle',
+                                  name: genderEquityPaper.name,
+                                  url: genderEquityPaper.url,
+                                  ...(genderEquityPaper.year
+                                      ? { datePublished: String(genderEquityPaper.year) }
+                                      : {}),
+                              },
+                          }
+                        : {}),
                     award: achievements.map(achievement => ({
                         '@type': 'Award',
                         name: achievement.title,
