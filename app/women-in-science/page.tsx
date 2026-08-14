@@ -112,6 +112,45 @@ export default function WomenInSciencePage() {
                             As an LGBTQIA+ scientist, Dr. Rummer is also dedicated to creating an inclusive environment where brilliant LGBTQIA+ minds are not lost from STEM. This includes maintaining open dialogue about LGBTQIA+ experiences in science, providing safe spaces for discussion, and advocating for policy changes that support LGBTQIA+ scientists.
                         </p>
                     </div>
+
+                    <article className="mt-12 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-8">
+                        <p className="text-sm font-semibold leading-7 text-blue-600 dark:text-blue-400">
+                            Latest research
+                        </p>
+                        <h3 className="mt-2 text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+                            Inclusive Science for a changing ocean: gender equity in elasmobranch research
+                        </h3>
+                        <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+                            Spaet, Mourier, and Rummer (2026). <em>Frontiers in Fish Science</em> 4:1816786.
+                        </p>
+                        <p className="mt-4 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                            A Perspective with Julia L.Y. Spaet and Johann Mourier evaluating gender representation across more than twelve thousand elasmobranch papers. Participation by women has increased, especially in early-career and lead-author roles, but progression into senior authorship remains uneven. The authors argue that diverse leadership is essential to the intellectual robustness of shark and ray science.
+                        </p>
+                        <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+                            <Link
+                                href="https://doi.org/10.3389/frish.2026.1816786"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-blue-500 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                            >
+                                Read the paper
+                            </Link>
+                            <Link
+                                href="https://rummerlab.com/papers/Spaet%2C%20Mourier%2C%20and%20Rummer%202026.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-sm font-semibold leading-6 text-slate-900 dark:text-white"
+                            >
+                                PDF <span aria-hidden="true">→</span>
+                            </Link>
+                            <Link
+                                href="/publications#featured"
+                                className="text-sm font-semibold leading-6 text-slate-900 dark:text-white"
+                            >
+                                Featured publications <span aria-hidden="true">→</span>
+                            </Link>
+                        </div>
+                    </article>
                 </div>
             </div>
 
@@ -247,6 +286,21 @@ export default function WomenInSciencePage() {
                     member: {
                         '@type': 'Person',
                         '@id': 'https://jodierummer.com/#person'
+                    },
+                    subjectOf: {
+                        '@type': 'ScholarlyArticle',
+                        name: 'Inclusive Science for a changing ocean: gender equity in elasmobranch research',
+                        author: [
+                            { '@type': 'Person', name: 'Julia L.Y. Spaet' },
+                            { '@type': 'Person', name: 'Johann Mourier' },
+                            { '@type': 'Person', name: 'Jodie L. Rummer', '@id': 'https://jodierummer.com/#person' }
+                        ],
+                        datePublished: '2026-08-14',
+                        publisher: {
+                            '@type': 'Periodical',
+                            name: 'Frontiers in Fish Science'
+                        },
+                        sameAs: 'https://doi.org/10.3389/frish.2026.1816786'
                     },
                     award: achievements.map(achievement => ({
                         '@type': 'Award',
