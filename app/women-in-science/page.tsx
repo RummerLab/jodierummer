@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Script from 'next/script'
+import { getRummerlabPapers } from '@/lib/rummerlab-papers'
 
 export const metadata = {
     title: "Women in Science - Dr. Jodie Rummer",
@@ -78,7 +79,9 @@ const impactAreas = [
     }
 ]
 
-export default function WomenInSciencePage() {
+export default async function WomenInSciencePage() {
+    const papers = await getRummerlabPapers();
+    const spaetPaper = papers.find((paper) => paper.filename.toLowerCase().includes('spaet'));
     return (
         <div className="bg-white dark:bg-slate-950">
             {/* Hero section */}
@@ -135,14 +138,16 @@ export default function WomenInSciencePage() {
                             >
                                 Read the paper
                             </Link>
-                            <Link
-                                href="https://rummerlab.com/papers/Spaet%2C%20Mourier%2C%20and%20Rummer%202026.pdf"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-sm font-semibold leading-6 text-slate-900 dark:text-white"
-                            >
-                                PDF <span aria-hidden="true">→</span>
-                            </Link>
+                            {spaetPaper ? (
+                                <Link
+                                    href={spaetPaper.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-sm font-semibold leading-6 text-slate-900 dark:text-white"
+                                >
+                                    PDF <span aria-hidden="true">→</span>
+                                </Link>
+                            ) : null}
                             <Link
                                 href="/publications#featured"
                                 className="text-sm font-semibold leading-6 text-slate-900 dark:text-white"

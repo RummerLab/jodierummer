@@ -43,8 +43,9 @@ If you suspect a security issue, run `snyk test`.
 - Early returns, DRY, `handle` prefix on event handlers (`handleClick`).
 - Style with Tailwind. UI must work in light and dark modes, and on desktop, tablet, and mobile.
 - Use Radix primitives already in the project for accessible interactive UI.
+- Team data and featured papers come from RummerLab APIs (`https://rummerlab.com/api/scholar/ynWS968AAAAJ/team` and `https://rummerlab.com/api/papers/featured`). Do not hardcode featured publications.
 - Use `git mv` when moving files.
-- Complete the change: no TODOs or placeholders.
+- Complete the change: no TODOs or placeholders. File a GitHub issue for follow-up work instead of leaving TODO comments or README notes.
 
 ## Images
 

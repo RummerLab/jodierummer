@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Script from 'next/script'
+import { getRummerlabFeaturedPapers } from '@/lib/rummerlab-papers'
 
 interface JournalArticle {
     id: string
@@ -44,29 +45,6 @@ export const metadata = {
   }
 }
 
-const featuredPublications: JournalArticle[] = [
-  {
-    id: 'spaet-mourier-rummer-2026',
-    title: 'Inclusive Science for a changing ocean: gender equity in elasmobranch research',
-    authors: 'Julia L.Y. Spaet, Johann Mourier, Jodie L. Rummer',
-    journal: 'Frontiers in Fish Science',
-    year: 2026,
-    volume: '4',
-    pages: '1816786',
-    doi: '10.3389/frish.2026.1816786',
-    abstract:
-      'Persistent inequities in marine science continue to shape who leads research, whose work is most visible, and which questions are prioritised. Drawing on a decade of global publication data alongside existing scholarship, this Perspective evaluates how gender representation has changed within elasmobranch research and where structural barriers remain. Authorship patterns across more than twelve thousand peer-reviewed publications indicate meaningful gains in participation by women, particularly at early career stages and in lead authorship, while progression into sustained senior authorship remains uneven. The authors argue that inclusion is fundamental to the intellectual robustness of shark and ray science, not an optional extra.',
-    keywords: [
-      'Diversity in Marine Science',
-      'gender diversity',
-      'inclusive science',
-      'Research culture',
-      'Shark Science',
-    ],
-  },
-]
-
-// Full lists still live on Google Scholar until the publications API is wired up.
 const publications: Publications = {
   journalArticles: [],
   bookChapters: []
@@ -79,7 +57,8 @@ const categories = [
   { name: 'Editorial Commentaries', count: 23 },
 ]
 
-export default function PublicationsPage() {
+export default async function PublicationsPage() {
+  const featuredPapers = await getRummerlabFeaturedPapers();
   return (
     <div className="bg-white dark:bg-slate-950">
       {/* Hero section */}
@@ -114,50 +93,25 @@ export default function PublicationsPage() {
           <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white mb-8">
             Featured Publications
           </h2>
-          <div className="space-y-8">
-            {featuredPublications.map((article) => (
-              <article key={article.id} className="relative isolate flex flex-col gap-8 lg:flex-row">
-                <div>
+          {featuredPapers.length > 0 ? (
+            <div className="space-y-6">
+              {featuredPapers.map((paper) => (
+                <article key={paper.filename} className="relative isolate">
                   <div className="flex items-center gap-x-4 text-xs">
-                    <time dateTime={article.year.toString()} className="text-slate-500 dark:text-slate-400">
-                      {article.year}
-                    </time>
-                    <span className="text-slate-500 dark:text-slate-400">{article.journal}</span>
+                    {paper.year ? (
+                      <time dateTime={String(paper.year)} className="text-slate-500 dark:text-slate-400">
+                        {paper.year}
+                      </time>
+                    ) : null}
                   </div>
-                  <div className="group relative max-w-xl">
-                    <h3 className="mt-3 text-lg font-semibold leading-6 text-slate-900 dark:text-white">
-                      <a href={`https://doi.org/${article.doi}`} target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 dark:hover:text-blue-400">
-                        {article.title}
-                      </a>
-                    </h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
-                      {article.authors}
-                    </p>
-                    <p className="mt-4 text-sm leading-6 text-slate-600 dark:text-slate-300">
-                      {article.abstract}
-                    </p>
-                  </div>
-                  {article.keywords && (
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {article.keywords.map((keyword) => (
-                        <span key={keyword} className="inline-flex items-center rounded-md bg-blue-50 dark:bg-blue-900/30 px-2 py-1 text-xs font-medium text-blue-700 dark:text-blue-300">
-                          {keyword}
-                        </span>
-                      ))}
-                    </div>
-                  )}
+                  <h3 className="mt-3 text-lg font-semibold leading-6 text-slate-900 dark:text-white">
+                    <a href={paper.url} target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 dark:hover:text-blue-400">
+                      {paper.name}
+                    </a>
+                  </h3>
                   <p className="mt-4 text-sm">
                     <a
-                      href={`https://doi.org/${article.doi}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
-                    >
-                      doi:{article.doi}
-                    </a>
-                    {' · '}
-                    <a
-                      href="https://rummerlab.com/papers/Spaet%2C%20Mourier%2C%20and%20Rummer%202026.pdf"
+                      href={paper.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
@@ -165,10 +119,21 @@ export default function PublicationsPage() {
                       PDF
                     </a>
                   </p>
-                </div>
-              </article>
-            ))}
-          </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <Link
+                href="https://rummerlab.com/publications"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-4 text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
+              >
+                View papers on RummerLab →
+              </Link>
+            </div>
+          )}
         </div>
       </div>
 
@@ -305,17 +270,11 @@ export default function PublicationsPage() {
             '@id': 'https://jodierummer.com/#person'
           },
           hasPart: [
-            ...featuredPublications.map(article => ({
+            ...featuredPapers.map(paper => ({
               '@type': 'ScholarlyArticle',
-              headline: article.title,
-              author: article.authors.split(', ').map(author => ({
-                '@type': 'Person',
-                name: author
-              })),
-              datePublished: article.year,
-              publisher: article.journal,
-              description: article.abstract,
-              sameAs: `https://doi.org/${article.doi}`
+              headline: paper.name,
+              datePublished: paper.year ?? undefined,
+              url: paper.url
             })),
             ...publications.journalArticles.map(article => ({
               '@type': 'ScholarlyArticle',
