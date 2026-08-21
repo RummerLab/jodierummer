@@ -35,6 +35,22 @@ const socialLinks = [
       </div>
     )
   },
+  {
+    name: 'Fenua FINdex',
+    href: 'https://fenuafindex.com/',
+    component: (
+      <div className="relative w-5 h-5">
+        <Image
+          src="https://fenuafindex.com/FenuaFINdex_icon.svg"
+          alt="Fenua FINdex Logo"
+          fill
+          className="object-contain brightness-[1.5] grayscale hover:grayscale-0 hover:brightness-100 transition-all duration-200 text-slate-400"
+          sizes="20px"
+          unoptimized
+        />
+      </div>
+    )
+  },
   { name: 'YouTube', href: 'https://www.youtube.com/@jodierummer', icon: FaYoutube },
   { name: 'Instagram', href: 'https://www.instagram.com/rummerjodie/', icon: FaInstagram },
 ]
