@@ -39,7 +39,7 @@ cd jodierummer
 2. Install dependencies:
 
 ```bash
-ppnpm install
+pnpm install
 ```
 
 3. Create a `.env.local` file:
