@@ -47,6 +47,15 @@ If you suspect a security issue, run `snyk test`.
 - Use `git mv` when moving files.
 - Complete the change: no TODOs or placeholders. File a GitHub issue for follow-up work instead of leaving TODO comments or README notes.
 
+## Asset filenames (SEO)
+
+When adding media or downloads to the repo (audio, video, PDFs, images from Downloads/WhatsApp/email, etc.), **always rename before committing**. Never keep generic client names (`WhatsApp Audio…`, `shark attacks.pdf`, `IMG_1234.jpg`).
+
+- Use lowercase **kebab-case** with descriptive keywords: who/what, outlet or topic, and a date when known (`YYYY-MM-DD` or `YYYY-MM`).
+- Prefer the correct extension for the content (e.g. `.m4a` for audio-only MP4/M4A).
+- Examples: `jodie-rummer-bbc-statement-2026-10-05.m4a`, `2026-01-16-Cairns-Post.jpg`.
+- Put static assets under clear `public/` paths (`public/audio/`, `public/files/`, `public/images/…`) and link/embed them with those SEO filenames.
+
 ## Images
 
 Use `next/image`. Prefer WebP via the optimizer.
