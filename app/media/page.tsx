@@ -159,6 +159,27 @@ export default function MediaPage() {
                 <section aria-labelledby="media-coverage-title" className="mb-20">
                     <h2 id="media-coverage-title" className="text-3xl font-semibold text-slate-900 dark:text-white mb-6">Recent Media Coverage</h2>
                     <div className="max-w-3xl space-y-8">
+                        {/* BBC Statement */}
+                        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl p-6">
+                            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">BBC</h3>
+                            <p className="text-slate-600 dark:text-slate-400 mb-4">October 5, 2026</p>
+                            <p className="text-slate-700 dark:text-slate-300 mb-4">
+                                Statement by Professor Jodie Rummer for the BBC.
+                            </p>
+                            <audio
+                                controls
+                                preload="metadata"
+                                className="w-full"
+                                aria-label="Listen to Professor Jodie Rummer's BBC statement, October 2026"
+                            >
+                                <source
+                                    src="/audio/jodie-rummer-bbc-statement-2026-10-05.m4a"
+                                    type="audio/mp4"
+                                />
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+
                         {/* Cairns Post */}
                         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl p-6">
                             <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Cairns Post</h3>
@@ -317,6 +338,15 @@ export default function MediaPage() {
                             uploadDate: '2014-11-14T00:00:00+10:00',
                             thumbnailUrl: 'https://img.youtube.com/vi/-4EEP9CpI7s/maxresdefault.jpg',
                             embedUrl: 'https://www.youtube.com/embed/-4EEP9CpI7s'
+                        },
+                        audio: {
+                            '@type': 'AudioObject',
+                            name: 'BBC statement by Professor Jodie Rummer',
+                            description: 'Statement by Professor Jodie Rummer for the BBC.',
+                            uploadDate: '2026-10-05T00:00:00+10:00',
+                            contentUrl: 'https://jodierummer.com/audio/jodie-rummer-bbc-statement-2026-10-05.m4a',
+                            encodingFormat: 'audio/mp4',
+                            duration: 'PT2M16S'
                         }
                     })}
                 </Script>
