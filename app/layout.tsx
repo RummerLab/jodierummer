@@ -51,6 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={outfit.variable} suppressHydrationWarning>
       <head>
+        <link rel="author" href="/humans.txt" type="text/plain" />
         <Script id="schema-person" type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',

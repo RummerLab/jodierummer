@@ -1,0 +1,26 @@
+/* TEAM */
+
+  Author: Dr Jodie Rummer
+  Role: Professor of Marine Biology, James Cook University
+  Contact: jodie.rummer@jcu.edu.au
+  Location: Townsville, Queensland, Australia
+
+  Developer: Luen Warneke
+  Contact: https://github.com/Luen
+  Location: Australia
+
+/* THANKS */
+
+  RummerLab and Physioshark teams
+  https://rummerlab.com
+  https://physioshark.org
+
+/* SITE */
+
+  Last update: 2026/11/12
+  Language: English
+  Doctype: HTML5
+  Standards: HTML5, CSS3, WCAG 2.1
+  Components: Next.js, React, TypeScript, Tailwind CSS, Radix UI
+  Hosting: Vercel
+  Analytics: Google Analytics, Vercel Analytics
