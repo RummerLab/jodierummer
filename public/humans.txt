@@ -17,7 +17,6 @@
 
 /* SITE */
 
-  Last update: 2026/11/12
   Language: English
   Doctype: HTML5
   Standards: HTML5, CSS3, WCAG 2.1
